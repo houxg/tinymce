@@ -1,9 +1,9 @@
-.mce-content-body *[contentEditable=true], .mce-content-body *[data-mce-contenteditable=true] {
+.mce-content-body *[contentEditable=true], .mce-content-body *[data-mon-contenteditable=true] {
 	background: #adffad;
 	border: 1px solid #999;
 }
 
-.mce-content-body *[contentEditable=false], .mce-content-body *[data-mce-contenteditable=false] {
+.mce-content-body *[contentEditable=false], .mce-content-body *[data-mon-contenteditable=false] {
 	background: #ffadad;
 	border: 1px solid #999;
 	margin: 0 1px 0 2px;
@@ -27,7 +27,7 @@
 	outline: 2px solid green;
 }
 
-.mce-content-body *[data-mce-selected] {
+.mce-content-body *[data-mon-selected] {
 	outline: 2px solid blue;
 }
 
@@ -36,7 +36,7 @@
 	right: 0;
 }
 
-*[data-mce-caret] {
+*[data-mon-caret] {
 	outline: 1px solid green;
 	position: absolute;
 	left: auto;

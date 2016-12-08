@@ -30,7 +30,7 @@ ModuleLoader.require([
 		equal(CaretCandidate.isCaretCandidate($('<span contentEditable="true"></span>')[0]), false);
 		equal(CaretCandidate.isCaretCandidate($('<span></span>')[0]), false);
 		equal(CaretCandidate.isCaretCandidate(document.createComment('text')), false);
-		equal(CaretCandidate.isCaretCandidate($('<span data-mce-caret="1"></span>')[0]), false);
+		equal(CaretCandidate.isCaretCandidate($('<span data-mon-caret="1"></span>')[0]), false);
 		equal(CaretCandidate.isCaretCandidate(document.createTextNode(Zwsp.ZWSP)), false);
 	});
 

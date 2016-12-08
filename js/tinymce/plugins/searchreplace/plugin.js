@@ -175,7 +175,7 @@
 				makeReplacementNode = function(fill, matchIndex) {
 					var clone = stencilNode.cloneNode(false);
 
-					clone.setAttribute('data-mce-index', matchIndex);
+					clone.setAttribute('data-mon-index', matchIndex);
 
 					if (fill) {
 						clone.appendChild(doc.createTextNode(fill));
@@ -395,7 +395,7 @@
 		};
 
 		function getElmIndex(elm) {
-			var value = elm.getAttribute('data-mce-index');
+			var value = elm.getAttribute('data-mon-index');
 
 			if (typeof value == "number") {
 				return "" + value;
@@ -408,7 +408,7 @@
 			var node, marker;
 
 			marker = editor.dom.create('span', {
-				"data-mce-bogus": 1
+				"data-mon-bogus": 1
 			});
 
 			marker.className = 'mce-match-marker'; // IE 7 adds class="mce-match-marker" and class=mce-match-marker
@@ -553,7 +553,7 @@
 						nextIndex--;
 					}
 				} else if (currentMatchIndex > currentIndex) {
-					nodes[i].setAttribute('data-mce-index', currentMatchIndex - 1);
+					nodes[i].setAttribute('data-mon-index', currentMatchIndex - 1);
 				}
 			}
 

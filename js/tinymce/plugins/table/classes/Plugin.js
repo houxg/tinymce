@@ -87,7 +87,7 @@ define("tinymce/tableplugin/Plugin", [
 			function bindStateListener() {
 				var selectedElm, selectedCells, parts = {}, sum = 0, state;
 
-				selectedCells = editor.dom.select('td[data-mce-selected],th[data-mce-selected]');
+				selectedCells = editor.dom.select('td[data-mon-selected],th[data-mon-selected]');
 				selectedElm = selectedCells[0];
 				if (!selectedElm) {
 					selectedElm = editor.selection.getStart();
@@ -147,7 +147,7 @@ define("tinymce/tableplugin/Plugin", [
 
 				for (var x = 0; x < 10; x++) {
 					html += '<td role="gridcell" tabindex="-1"><a id="mcegrid' + (y * 10 + x) + '" href="#" ' +
-						'data-mce-x="' + x + '" data-mce-y="' + y + '"></a></td>';
+						'data-mon-x="' + x + '" data-mon-y="' + y + '"></a></td>';
 				}
 
 				html += '</tr>';
@@ -228,8 +228,8 @@ define("tinymce/tableplugin/Plugin", [
 							var target = e.target, x, y;
 
 							if (target.tagName.toUpperCase() == 'A') {
-								x = parseInt(target.getAttribute('data-mce-x'), 10);
-								y = parseInt(target.getAttribute('data-mce-y'), 10);
+								x = parseInt(target.getAttribute('data-mon-x'), 10);
+								y = parseInt(target.getAttribute('data-mon-y'), 10);
 
 								if (this.isRtl() || this.parent().rel == 'tl-tr') {
 									x = 9 - x;
@@ -356,7 +356,7 @@ define("tinymce/tableplugin/Plugin", [
 		editor.on('PreInit', function() {
 			// Remove internal data attributes
 			editor.serializer.addAttributeFilter(
-				'data-mce-cell-padding,data-mce-border,data-mce-border-color',
+				'data-mon-cell-padding,data-mon-border,data-mon-border-color',
 				function(nodes, name) {
 
 					var i = nodes.length;
@@ -378,7 +378,7 @@ define("tinymce/tableplugin/Plugin", [
 
 				cell = editor.dom.getParent(editor.selection.getStart(), 'th,td');
 
-				if (!editor.dom.select('td[data-mce-selected],th[data-mce-selected]').length) {
+				if (!editor.dom.select('td[data-mon-selected],th[data-mon-selected]').length) {
 					dialogs.merge(grid, cell);
 				} else {
 					grid.merge();

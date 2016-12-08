@@ -53,7 +53,7 @@ define("tinymce/imagetoolsplugin/ImageSize", [
 			if (width || height) {
 				img.style.width = size.w + 'px';
 				img.style.height = size.h + 'px';
-				img.removeAttribute('data-mce-style');
+				img.removeAttribute('data-mon-style');
 			}
 
 			width = img.width;

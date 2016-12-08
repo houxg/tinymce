@@ -67,7 +67,7 @@ test('Enter before first wrapped IMG in P', function() {
 	editor.setContent('<p><b><img src="about:blank" /></b></p>');
 	editor.selection.setCursorLocation(editor.getBody().firstChild.firstChild, 0);
 	Utils.pressEnter();
-	equal(editor.getBody().firstChild.innerHTML, (tinymce.isIE && tinymce.Env.ie < 11) ? '' : '<br data-mce-bogus="1">');
+	equal(editor.getBody().firstChild.innerHTML, (tinymce.isIE && tinymce.Env.ie < 11) ? '' : '<br data-mon-bogus="1">');
 	equal(editor.getContent(), '<p>\u00a0</p><p><b><img src="about:blank" /></b></p>');
 });
 
@@ -931,46 +931,46 @@ test('Enter at the end of DIV layer', function() {
 });
 
 test('Enter in div inside contentEditable:false div', function() {
-	editor.getBody().innerHTML = '<div data-mce-contenteditable="false"><div>abcd</div></div>';
+	editor.getBody().innerHTML = '<div data-mon-contenteditable="false"><div>abcd</div></div>';
 	Utils.setSelection('div div', 2);
 	Utils.pressEnter();
-	equal(Utils.cleanHtml(editor.getBody().innerHTML), '<div data-mce-contenteditable="false"><div>abcd</div></div>');
+	equal(Utils.cleanHtml(editor.getBody().innerHTML), '<div data-mon-contenteditable="false"><div>abcd</div></div>');
 });
 
 test('Enter in div with contentEditable:true inside contentEditable:false div', function() {
-	editor.getBody().innerHTML = '<div data-mce-contenteditable="false"><div data-mce-contenteditable="true">abcd</div></div>';
+	editor.getBody().innerHTML = '<div data-mon-contenteditable="false"><div data-mon-contenteditable="true">abcd</div></div>';
 	Utils.setSelection('div div', 2);
 	Utils.pressEnter();
-	equal(Utils.cleanHtml(editor.getBody().innerHTML), '<div data-mce-contenteditable="false"><div data-mce-contenteditable="true"><p>ab</p><p>cd</p></div></div>');
+	equal(Utils.cleanHtml(editor.getBody().innerHTML), '<div data-mon-contenteditable="false"><div data-mon-contenteditable="true"><p>ab</p><p>cd</p></div></div>');
 });
 
 test('Enter in span with contentEditable:true inside contentEditable:false div', function() {
-	editor.getBody().innerHTML = '<div data-mce-contenteditable="false"><span data-mce-contenteditable="true">abcd</span></div>';
+	editor.getBody().innerHTML = '<div data-mon-contenteditable="false"><span data-mon-contenteditable="true">abcd</span></div>';
 	Utils.setSelection('span', 2);
 	Utils.pressEnter();
-	equal(Utils.cleanHtml(editor.getBody().innerHTML), '<div data-mce-contenteditable="false"><span data-mce-contenteditable="true">abcd</span></div>');
+	equal(Utils.cleanHtml(editor.getBody().innerHTML), '<div data-mon-contenteditable="false"><span data-mon-contenteditable="true">abcd</span></div>');
 });
 
 test('Shift+Enter in span with contentEditable:true inside contentEditable:false div', function() {
-	editor.getBody().innerHTML = '<div data-mce-contenteditable="false"><span data-mce-contenteditable="true">abcd</span></div>';
+	editor.getBody().innerHTML = '<div data-mon-contenteditable="false"><span data-mon-contenteditable="true">abcd</span></div>';
 	Utils.setSelection('span', 2);
 	Utils.pressEnter({shiftKey: true});
-	equal(Utils.cleanHtml(editor.getBody().innerHTML), '<div data-mce-contenteditable="false"><span data-mce-contenteditable="true">ab<br>cd</span></div>');
+	equal(Utils.cleanHtml(editor.getBody().innerHTML), '<div data-mon-contenteditable="false"><span data-mon-contenteditable="true">ab<br>cd</span></div>');
 });
 
 test('Enter in span with contentEditable:true inside contentEditable:false div and forced_root_block: false', function() {
 	editor.settings.forced_root_block = false;
-	editor.getBody().innerHTML = '<div data-mce-contenteditable="false"><span data-mce-contenteditable="true">abcd</span></div>';
+	editor.getBody().innerHTML = '<div data-mon-contenteditable="false"><span data-mon-contenteditable="true">abcd</span></div>';
 	Utils.setSelection('span', 2);
 	Utils.pressEnter();
-	equal(Utils.cleanHtml(editor.getBody().innerHTML), '<div data-mce-contenteditable="false"><span data-mce-contenteditable="true">ab<br>cd</span></div>');
+	equal(Utils.cleanHtml(editor.getBody().innerHTML), '<div data-mon-contenteditable="false"><span data-mon-contenteditable="true">ab<br>cd</span></div>');
 });
 
 test('Enter in em within contentEditable:true div inside contentEditable:false div', function() {
-	editor.getBody().innerHTML = '<div data-mce-contenteditable="false"><div data-mce-contenteditable="true"><em>abcd</em></div></div>';
+	editor.getBody().innerHTML = '<div data-mon-contenteditable="false"><div data-mon-contenteditable="true"><em>abcd</em></div></div>';
 	Utils.setSelection('em', 2);
 	Utils.pressEnter();
-	equal(Utils.cleanHtml(editor.getBody().innerHTML), '<div data-mce-contenteditable="false"><div data-mce-contenteditable="true"><p><em>ab</em></p><p><em>cd</em></p></div></div>');
+	equal(Utils.cleanHtml(editor.getBody().innerHTML), '<div data-mon-contenteditable="false"><div data-mon-contenteditable="true"><p><em>ab</em></p><p><em>cd</em></p></div></div>');
 });
 
 test('Enter at end of text in a span inside a P and keep_styles: false', function() {

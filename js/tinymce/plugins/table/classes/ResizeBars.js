@@ -157,10 +157,10 @@ define("tinymce/tableplugin/ResizeBars", [
 		// Generates a resize bar object for the editor to add.
 		function generateBar(classToAdd, cursor, left, top, height, width, indexAttr, index) {
 			var bar = {
-				'data-mce-bogus': 'all',
+				'data-mon-bogus': 'all',
 				'class': RESIZE_BAR_CLASS + ' ' + classToAdd,
 				'unselectable': 'on',
-				'data-mce-resize': false,
+				'data-mon-resize': false,
 				style: 'cursor: ' + cursor + '; ' +
 					'margin: 0; ' +
 					'padding: 0; ' +
@@ -792,7 +792,7 @@ define("tinymce/tableplugin/ResizeBars", [
 						'top: 0px; ' +
 						'height: 100%; ' +
 						'width: 100%;');
-			blocker.setAttribute('data-mce-bogus', 'all');
+			blocker.setAttribute('data-mon-bogus', 'all');
 
 			return blocker;
 		}

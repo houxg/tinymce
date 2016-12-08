@@ -839,14 +839,14 @@ define("tinymce/Editor", [
 			 */
 			self.parser = new DomParser(settings, self.schema);
 
-			// Convert src and href into data-mce-src, data-mce-href and data-mce-style
+			// Convert src and href into data-mon-src, data-mon-href and data-mon-style
 			self.parser.addAttributeFilter('src,href,style,tabindex', function(nodes, name) {
 				var i = nodes.length, node, dom = self.dom, value, internalName;
 
 				while (i--) {
 					node = nodes[i];
 					value = node.attr(name);
-					internalName = 'data-mce-' + name;
+					internalName = 'data-mon-' + name;
 
 					// Add internal attribute if we need to we don't on a refresh of the document
 					if (!node.attributes.map[internalName]) {
@@ -1749,7 +1749,7 @@ define("tinymce/Editor", [
 			// Padd empty content in Gecko and Safari. Commands will otherwise fail on the content
 			// It will also be impossible to place the caret in the editor unless there is a BR element present
 			if (content.length === 0 || /^\s+$/.test(content)) {
-				padd = ie && ie < 11 ? '' : '<br data-mce-bogus="1">';
+				padd = ie && ie < 11 ? '' : '<br data-mon-bogus="1">';
 
 				// Todo: There is a lot more root elements that need special padding
 				// so separate this and add all of them at some point.
@@ -1768,7 +1768,7 @@ define("tinymce/Editor", [
 					content = self.dom.createHTML(forcedRootBlockName, self.settings.forced_root_block_attrs, content);
 				} else if (!ie && !content) {
 					// We need to add a BR when forced_root_block is disabled on non IE browsers to place the caret
-					content = '<br data-mce-bogus="1">';
+					content = '<br data-mon-bogus="1">';
 				}
 
 				self.dom.setHTML(body, content);

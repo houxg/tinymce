@@ -105,7 +105,7 @@ define("tinymce/caret/FakeCaret", [
 				clientRect = getAbsoluteClientRect(node, before);
 				$(caretContainerNode).css('top', clientRect.top);
 
-				$lastVisualCaret = $('<div class="mce-visual-caret" data-mce-bogus="all"></div>').css(clientRect).appendTo(rootNode);
+				$lastVisualCaret = $('<div class="mce-visual-caret" data-mon-bogus="all"></div>').css(clientRect).appendTo(rootNode);
 
 				if (before) {
 					$lastVisualCaret.addClass('mce-visual-caret-before');
@@ -170,7 +170,7 @@ define("tinymce/caret/FakeCaret", [
 				'.mce-visual-caret-hidden {' +
 					'display: none;' +
 				'}' +
-				'*[data-mce-caret] {' +
+				'*[data-mon-caret] {' +
 					'position: absolute;' +
 					'left: -1000px;' +
 					'right: auto;' +

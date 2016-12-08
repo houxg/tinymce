@@ -29,11 +29,11 @@ define("tinymce/ui/ElementPath", [
 
 			function isHidden(elm) {
 				if (elm.nodeType === 1) {
-					if (elm.nodeName == "BR" || !!elm.getAttribute('data-mce-bogus')) {
+					if (elm.nodeName == "BR" || !!elm.getAttribute('data-mon-bogus')) {
 						return true;
 					}
 
-					if (elm.getAttribute('data-mce-type') === 'bookmark') {
+					if (elm.getAttribute('data-mon-type') === 'bookmark') {
 						return true;
 					}
 				}

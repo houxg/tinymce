@@ -422,7 +422,7 @@ define("tinymce/html/Node", [], function() {
 				do {
 					if (node.type === 1) {
 						// Ignore bogus elements
-						if (node.attributes.map['data-mce-bogus']) {
+						if (node.attributes.map['data-mon-bogus']) {
 							continue;
 						}
 
@@ -435,7 +435,7 @@ define("tinymce/html/Node", [], function() {
 						i = node.attributes.length;
 						while (i--) {
 							name = node.attributes[i].name;
-							if (name === "name" || name.indexOf('data-mce-bookmark') === 0) {
+							if (name === "name" || name.indexOf('data-mon-bookmark') === 0) {
 								return false;
 							}
 						}

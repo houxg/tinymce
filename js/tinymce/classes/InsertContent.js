@@ -89,7 +89,7 @@ define("tinymce/InsertContent", [
 			if (merge) {
 				var root = editor.getBody(), elementUtils = new ElementUtils(dom);
 
-				Tools.each(dom.select('*[data-mce-fragment]'), function(node) {
+				Tools.each(dom.select('*[data-mon-fragment]'), function(node) {
 					for (var testNode = node.parentNode; testNode && testNode != root; testNode = testNode.parentNode) {
 						if (textInlineElements[node.nodeName.toLowerCase()] && elementUtils.compare(testNode, node)) {
 							dom.remove(node, true);
@@ -104,19 +104,19 @@ define("tinymce/InsertContent", [
 
 			while ((node = node.walk())) {
 				if (node.type === 1) {
-					node.attr('data-mce-fragment', '1');
+					node.attr('data-mon-fragment', '1');
 				}
 			}
 		}
 
 		function umarkFragmentElements(elm) {
 			Tools.each(elm.getElementsByTagName('*'), function(elm) {
-				elm.removeAttribute('data-mce-fragment');
+				elm.removeAttribute('data-mon-fragment');
 			});
 		}
 
 		function isPartOfFragment(node) {
-			return !!node.getAttribute('data-mce-fragment');
+			return !!node.getAttribute('data-mon-fragment');
 		}
 
 		function canHaveChildren(node) {
@@ -198,7 +198,7 @@ define("tinymce/InsertContent", [
 					rng = nextRng;
 					dom.remove(parentBlock);
 				} else {
-					dom.add(parentBlock, dom.create('br', {'data-mce-bogus': '1'}));
+					dom.add(parentBlock, dom.create('br', {'data-mon-bogus': '1'}));
 				}
 			}
 
@@ -217,7 +217,7 @@ define("tinymce/InsertContent", [
 		serializer = new Serializer({
 			validate: editor.settings.validate
 		}, editor.schema);
-		bookmarkHtml = '<span id="mce_marker" data-mce-type="bookmark">&#xFEFF;&#x200B;</span>';
+		bookmarkHtml = '<span id="mce_marker" data-mon-type="bookmark">&#xFEFF;&#x200B;</span>';
 
 		// Run beforeSetContent handlers on the HTML to be inserted
 		args = {content: value, format: 'html', selection: true};

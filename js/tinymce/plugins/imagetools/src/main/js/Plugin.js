@@ -142,7 +142,7 @@ define("tinymce/imagetoolsplugin/Plugin", [
 
 					editor.$(selectedImage).attr({
 						src: blobInfo.blobUri()
-					}).removeAttr('data-mce-src');
+					}).removeAttr('data-mon-src');
 				});
 
 				return blobInfo;
@@ -271,7 +271,7 @@ define("tinymce/imagetoolsplugin/Plugin", [
 		}
 
 		function isEditableImage(img) {
-			var selectorMatched = editor.dom.is(img, 'img:not([data-mce-object],[data-mce-placeholder])');
+			var selectorMatched = editor.dom.is(img, 'img:not([data-mon-object],[data-mon-placeholder])');
 
 			return selectorMatched && (isLocalImage(img) || isCorsImage(img) || editor.settings.imagetools_proxy);
 		}

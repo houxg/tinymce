@@ -81,11 +81,11 @@ define("tinymce/file/ImageScanner", [
 					return false;
 				}
 
-				if (img.hasAttribute('data-mce-bogus')) {
+				if (img.hasAttribute('data-mon-bogus')) {
 					return false;
 				}
 
-				if (img.hasAttribute('data-mce-placeholder')) {
+				if (img.hasAttribute('data-mon-placeholder')) {
 					return false;
 				}
 

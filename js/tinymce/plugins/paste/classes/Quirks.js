@@ -140,7 +140,7 @@ define("tinymce/pasteplugin/Quirks", [
 			}
 
 			// Keep internal styles
-			content = content.replace(/(<[^>]+) data-mce-style="([^"]+)"([^>]*>)/gi, function(all, before, value, after) {
+			content = content.replace(/(<[^>]+) data-mon-style="([^"]+)"([^>]*>)/gi, function(all, before, value, after) {
 				return before + ' style="' + value + '"' + after;
 			});
 

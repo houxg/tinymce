@@ -29,11 +29,11 @@ test("isEmpty true", function() {
 
 	ok(editor.plugins.autosave.isEmpty('<p><br></p>'));
 	ok(editor.plugins.autosave.isEmpty('<p><br /></p>'));
-	ok(editor.plugins.autosave.isEmpty('<p><br data-mce-bogus="true" /></p>'));
+	ok(editor.plugins.autosave.isEmpty('<p><br data-mon-bogus="true" /></p>'));
 
 	ok(editor.plugins.autosave.isEmpty('<p><br><br></p>'));
 	ok(editor.plugins.autosave.isEmpty('<p><br /><br /></p>'));
-	ok(editor.plugins.autosave.isEmpty('<p><br data-mce-bogus="true" /><br data-mce-bogus="true" /></p>'));
+	ok(editor.plugins.autosave.isEmpty('<p><br data-mon-bogus="true" /><br data-mon-bogus="true" /></p>'));
 });
 
 test("isEmpty false", function() {
@@ -47,11 +47,11 @@ test("isEmpty false", function() {
 
 	ok(!editor.plugins.autosave.isEmpty('<p><br>X</p>'));
 	ok(!editor.plugins.autosave.isEmpty('<p><br />X</p>'));
-	ok(!editor.plugins.autosave.isEmpty('<p><br data-mce-bogus="true" />X</p>'));
+	ok(!editor.plugins.autosave.isEmpty('<p><br data-mon-bogus="true" />X</p>'));
 
 	ok(!editor.plugins.autosave.isEmpty('<p><br><br>X</p>'));
 	ok(!editor.plugins.autosave.isEmpty('<p><br /><br />X</p>'));
-	ok(!editor.plugins.autosave.isEmpty('<p><br data-mce-bogus="true" /><br data-mce-bogus="true" />X</p>'));
+	ok(!editor.plugins.autosave.isEmpty('<p><br data-mon-bogus="true" /><br data-mon-bogus="true" />X</p>'));
 
 	ok(!editor.plugins.autosave.isEmpty('<h1></h1>'));
 	ok(!editor.plugins.autosave.isEmpty('<img src="x" />'));

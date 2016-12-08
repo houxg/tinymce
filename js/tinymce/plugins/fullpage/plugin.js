@@ -404,7 +404,7 @@ tinymce.PluginManager.add('fullpage', function(editor) {
 
 		var currentStyleSheetsMap = {};
 		tinymce.each(headElm.getElementsByTagName('link'), function(stylesheet) {
-			if (stylesheet.rel == 'stylesheet' && stylesheet.getAttribute('data-mce-fullpage')) {
+			if (stylesheet.rel == 'stylesheet' && stylesheet.getAttribute('data-mon-fullpage')) {
 				currentStyleSheetsMap[stylesheet.href] = stylesheet;
 			}
 		});
@@ -421,7 +421,7 @@ tinymce.PluginManager.add('fullpage', function(editor) {
 					rel: 'stylesheet',
 					text: 'text/css',
 					href: href,
-					'data-mce-fullpage': '1'
+					'data-mon-fullpage': '1'
 				});
 			}
 

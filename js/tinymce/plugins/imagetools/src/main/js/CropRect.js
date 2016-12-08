@@ -109,7 +109,7 @@ define("tinymce/imagetoolsplugin/CropRect", [
 
 			Tools.each(blockers, function(blocker) {
 				$('#' + id, containerElm).append(
-					'<div id="' + id + '-' + blocker + '"class="' + prefix + 'croprect-block" style="display: none" data-mce-bogus="all">'
+					'<div id="' + id + '-' + blocker + '"class="' + prefix + 'croprect-block" style="display: none" data-mon-bogus="all">'
 				);
 			});
 
@@ -117,7 +117,7 @@ define("tinymce/imagetoolsplugin/CropRect", [
 				$('#' + id, containerElm).append(
 					'<div id="' + id + '-' + handle.name + '" class="' + prefix +
 						'croprect-handle ' + prefix + 'croprect-handle-' + handle.name + '"' +
-						'style="display: none" data-mce-bogus="all" role="gridcell" tabindex="-1"' +
+						'style="display: none" data-mon-bogus="all" role="gridcell" tabindex="-1"' +
 						' aria-label="' + handle.label + '" aria-grabbed="false">'
 				);
 			});

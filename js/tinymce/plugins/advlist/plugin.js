@@ -72,7 +72,7 @@ tinymce.PluginManager.add('advlist', function(editor) {
 					}
 
 					dom.setStyle(list, 'listStyleType', styleValue ? styleValue : null);
-					list.removeAttribute('data-mce-style');
+					list.removeAttribute('data-mon-style');
 				});
 			}
 

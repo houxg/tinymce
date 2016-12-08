@@ -43,7 +43,7 @@ tinymce.PluginManager.add('noneditable', function(editor) {
 			}
 
 			return (
-				'<span class="' + cls + '" data-mce-content="' + editor.dom.encode(args[0]) + '">' +
+				'<span class="' + cls + '" data-mon-content="' + editor.dom.encode(args[0]) + '">' +
 				editor.dom.encode(typeof args[1] === "string" ? args[1] : args[0]) + '</span>'
 			);
 		}
@@ -99,11 +99,11 @@ tinymce.PluginManager.add('noneditable', function(editor) {
 					continue;
 				}
 
-				if (nonEditableRegExps && node.attr('data-mce-content')) {
+				if (nonEditableRegExps && node.attr('data-mon-content')) {
 					node.name = "#text";
 					node.type = 3;
 					node.raw = true;
-					node.value = node.attr('data-mce-content');
+					node.value = node.attr('data-mon-content');
 				} else {
 					node.attr(contentEditableAttrName, null);
 				}

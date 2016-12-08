@@ -75,7 +75,7 @@ define("tinymce/dom/NodeType", [], function() {
 	}
 
 	function isBogus(node) {
-		return isElement(node) && node.hasAttribute('data-mce-bogus');
+		return isElement(node) && node.hasAttribute('data-mon-bogus');
 	}
 
 	function hasContentEditableState(value) {
@@ -85,7 +85,7 @@ define("tinymce/dom/NodeType", [], function() {
 					return true;
 				}
 
-				if (node.getAttribute('data-mce-contenteditable') === value) {
+				if (node.getAttribute('data-mon-contenteditable') === value) {
 					return true;
 				}
 			}

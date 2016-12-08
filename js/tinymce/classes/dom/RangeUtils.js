@@ -86,7 +86,7 @@ define("tinymce/dom/RangeUtils", [
 
 			// Handle table cell selection the table plugin enables
 			// you to fake select table cells and perform formatting actions on them
-			nodes = dom.select('td[data-mce-selected],th[data-mce-selected]');
+			nodes = dom.select('td[data-mon-selected],th[data-mon-selected]');
 			if (nodes.length > 0) {
 				each(nodes, function(node) {
 					callback([node]);

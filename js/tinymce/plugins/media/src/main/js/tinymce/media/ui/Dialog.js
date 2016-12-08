@@ -24,14 +24,14 @@ define('tinymce.media.ui.Dialog', [
 		if (dataEmbed) {
 			return {source1: dataEmbed, 'data-ephox-embed-iri': dataEmbed};
 		}
-		return element.getAttribute('data-mce-object') ?
+		return element.getAttribute('data-mon-object') ?
 			HtmlToData.htmlToData(editor.settings.media_scripts, editor.serializer.serialize(element, {selection: true})) :
 			{};
 	};
 	var getSource = function (editor) {
 		var elm = editor.selection.getNode();
 
-		if (elm.getAttribute('data-mce-object')) {
+		if (elm.getAttribute('data-mon-object')) {
 			return editor.selection.getContent();
 		}
 	};
@@ -49,7 +49,7 @@ define('tinymce.media.ui.Dialog', [
 	var selectPlaceholder = function (editor, beforeObjects) {
 		var i;
 		var y;
-		var afterObjects = editor.dom.select('img[data-mce-object]');
+		var afterObjects = editor.dom.select('img[data-mon-object]');
 
 		// Find new image placeholder so we can select it
 		for (i = 0; i < beforeObjects.length; i++) {
@@ -69,7 +69,7 @@ define('tinymce.media.ui.Dialog', [
 
 			Service.getEmbedHtml(editor, data)
 				.then(function (response) {
-					var beforeObjects = editor.dom.select('img[data-mce-object]');
+					var beforeObjects = editor.dom.select('img[data-mon-object]');
 					var html = data.embed ? data.embed : response.html;
 
 					editor.insertContent(html);

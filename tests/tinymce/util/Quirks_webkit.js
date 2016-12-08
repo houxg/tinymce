@@ -334,7 +334,7 @@ if (tinymce.isWebKit) {
 		editor.getBody().innerHTML = '<p>abc</p>';
 		Utils.setSelection('p', 0, 'p', 3);
 		editor.fire('keydown', {keyCode: 46});
-		equal(Utils.cleanHtml(editor.getBody().innerHTML), '<p><br data-mce-bogus="1"></p>');
+		equal(Utils.cleanHtml(editor.getBody().innerHTML), '<p><br data-mon-bogus="1"></p>');
 		equal(editor.selection.getStart(true).nodeName, 'P');
 	});
 
@@ -342,7 +342,7 @@ if (tinymce.isWebKit) {
 		editor.getBody().innerHTML = '<p>abc</p>';
 		Utils.setSelection('p', 0, 'p', 3);
 		editor.fire('keydown', {keyCode: 8});
-		equal(Utils.cleanHtml(editor.getBody().innerHTML), '<p><br data-mce-bogus="1"></p>');
+		equal(Utils.cleanHtml(editor.getBody().innerHTML), '<p><br data-mon-bogus="1"></p>');
 		equal(editor.selection.getStart(true).nodeName, 'P');
 	});
 } else {

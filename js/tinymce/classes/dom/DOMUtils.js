@@ -46,11 +46,11 @@ define("tinymce/dom/DOMUtils", [
 					value = settings.url_converter.call(settings.url_converter_scope || domUtils, value, name, $elm[0]);
 				}
 
-				$elm.attr('data-mce-' + name, value).attr(name, value);
+				$elm.attr('data-mon-' + name, value).attr(name, value);
 			},
 
 			get: function($elm, name) {
-				return $elm.attr('data-mce-' + name) || $elm.attr(name);
+				return $elm.attr('data-mon-' + name) || $elm.attr(name);
 			}
 		};
 
@@ -63,14 +63,14 @@ define("tinymce/dom/DOMUtils", [
 					}
 
 					if (keepValues) {
-						$elm.attr('data-mce-style', value);
+						$elm.attr('data-mon-style', value);
 					}
 
 					$elm.attr('style', value);
 				},
 
 				get: function($elm) {
-					var value = $elm.attr('data-mce-style') || $elm.attr('style');
+					var value = $elm.attr('data-mon-style') || $elm.attr('style');
 
 					value = domUtils.serializeStyle(domUtils.parseStyle(value), $elm[0].nodeName);
 
@@ -95,7 +95,7 @@ define("tinymce/dom/DOMUtils", [
 			value = null;
 		}
 
-		$elm.attr('data-mce-style', value);
+		$elm.attr('data-mon-style', value);
 	}
 
 	function nodeIndex(node, normalized) {
@@ -1471,7 +1471,7 @@ define("tinymce/dom/DOMUtils", [
 
 					if (type === 1) {
 						// Ignore bogus elements
-						var bogusVal = node.getAttribute('data-mce-bogus');
+						var bogusVal = node.getAttribute('data-mon-bogus');
 						if (bogusVal) {
 							node = walker.next(bogusVal === 'all');
 							continue;
@@ -1495,7 +1495,7 @@ define("tinymce/dom/DOMUtils", [
 						i = attributes.length;
 						while (i--) {
 							name = attributes[i].nodeName;
-							if (name === "name" || name === 'data-mce-bookmark') {
+							if (name === "name" || name === 'data-mon-bookmark') {
 								return false;
 							}
 						}
@@ -1575,7 +1575,7 @@ define("tinymce/dom/DOMUtils", [
 					return previousIsSpan && nextIsSpan;
 				}
 
-				if (type == 1 && node.getAttribute('data-mce-type') == 'bookmark') {
+				if (type == 1 && node.getAttribute('data-mon-type') == 'bookmark') {
 					return;
 				}
 
@@ -1599,7 +1599,7 @@ define("tinymce/dom/DOMUtils", [
 
 						// TODO fix this complex if
 						if (children.length == 1 && children[0] && children[0].nodeType == 1 &&
-							children[0].getAttribute('data-mce-type') == 'bookmark') {
+							children[0].getAttribute('data-mon-type') == 'bookmark') {
 							node.parentNode.insertBefore(children[0], node);
 						}
 
@@ -1741,7 +1741,7 @@ define("tinymce/dom/DOMUtils", [
 			}
 
 			// Check for fake content editable
-			contentEditable = node.getAttribute("data-mce-contenteditable");
+			contentEditable = node.getAttribute("data-mon-contenteditable");
 			if (contentEditable && contentEditable !== "inherit") {
 				return contentEditable;
 			}

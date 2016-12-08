@@ -255,7 +255,7 @@ define("tinymce/spellcheckerplugin/Plugin", [
 
 			if (all) {
 				Tools.each(editor.dom.select('span.mce-spellchecker-word'), function(span) {
-					if (span.getAttribute('data-mce-word') == word) {
+					if (span.getAttribute('data-mon-word') == word) {
 						editor.dom.remove(span, true);
 					}
 				});
@@ -278,7 +278,7 @@ define("tinymce/spellcheckerplugin/Plugin", [
 		}
 
 		function getElmIndex(elm) {
-			var value = elm.getAttribute('data-mce-index');
+			var value = elm.getAttribute('data-mon-index');
 
 			if (typeof value == "number") {
 				return "" + value;
@@ -321,7 +321,7 @@ define("tinymce/spellcheckerplugin/Plugin", [
 					rng.setStartBefore(spans[0]);
 					rng.setEndAfter(spans[spans.length - 1]);
 					editor.selection.setRng(rng);
-					showSuggestions(target.getAttribute('data-mce-word'), spans);
+					showSuggestions(target.getAttribute('data-mon-word'), spans);
 				}
 			}
 		});
@@ -389,8 +389,8 @@ define("tinymce/spellcheckerplugin/Plugin", [
 			}).wrap(function(match) {
 				return editor.dom.create('span', {
 					"class": 'mce-spellchecker-word',
-					"data-mce-bogus": 1,
-					"data-mce-word": match.text
+					"data-mon-bogus": 1,
+					"data-mon-word": match.text
 				});
 			});
 

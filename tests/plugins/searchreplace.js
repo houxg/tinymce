@@ -115,8 +115,8 @@ test('Find multiple matches with pre blocks', function() {
 	editor.getBody().innerHTML = 'abc<pre>  abc  </pre>abc';
 	equal(3, editor.plugins.searchreplace.find('b'));
 	equal(Utils.normalizeHtml(editor.getBody().innerHTML), (
-		'a<span class="mce-match-marker mce-match-marker-selected" data-mce-bogus="1" data-mce-index="0">b</span>c' +
-		'<pre>  a<span class="mce-match-marker" data-mce-bogus="1" data-mce-index="1">b</span>c  </pre>' +
-		'a<span class="mce-match-marker" data-mce-bogus="1" data-mce-index="2">b</span>c'
+		'a<span class="mce-match-marker mce-match-marker-selected" data-mon-bogus="1" data-mon-index="0">b</span>c' +
+		'<pre>  a<span class="mce-match-marker" data-mon-bogus="1" data-mon-index="1">b</span>c  </pre>' +
+		'a<span class="mce-match-marker" data-mon-bogus="1" data-mon-index="2">b</span>c'
 	));
 });

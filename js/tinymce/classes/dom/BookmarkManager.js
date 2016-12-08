@@ -58,7 +58,7 @@ define("tinymce/dom/BookmarkManager", [
 				var count = 0;
 
 				Tools.each(dom.select(name), function(node) {
-					if (node.getAttribute('data-mce-bogus') === 'all') {
+					if (node.getAttribute('data-mon-bogus') === 'all') {
 						return;
 					}
 
@@ -218,7 +218,7 @@ define("tinymce/dom/BookmarkManager", [
 					try {
 						// Insert start marker
 						rng.collapse();
-						rng.pasteHTML('<span data-mce-type="bookmark" id="' + id + '_start" style="' + styles + '">' + chr + '</span>');
+						rng.pasteHTML('<span data-mon-type="bookmark" id="' + id + '_start" style="' + styles + '">' + chr + '</span>');
 
 						// Insert end marker
 						if (!collapsed) {
@@ -231,7 +231,7 @@ define("tinymce/dom/BookmarkManager", [
 								rng2.move('character', -1);
 							}
 
-							rng2.pasteHTML('<span data-mce-type="bookmark" id="' + id + '_end" style="' + styles + '">' + chr + '</span>');
+							rng2.pasteHTML('<span data-mon-type="bookmark" id="' + id + '_end" style="' + styles + '">' + chr + '</span>');
 						}
 					} catch (ex) {
 						// IE might throw unspecified error so lets ignore it
@@ -257,12 +257,12 @@ define("tinymce/dom/BookmarkManager", [
 				// Insert end marker
 				if (!collapsed) {
 					rng2.collapse(false);
-					rng2.insertNode(dom.create('span', {'data-mce-type': "bookmark", id: id + '_end', style: styles}, chr));
+					rng2.insertNode(dom.create('span', {'data-mon-type': "bookmark", id: id + '_end', style: styles}, chr));
 				}
 
 				rng = normalizeTableCellSelection(rng);
 				rng.collapse(true);
-				rng.insertNode(dom.create('span', {'data-mce-type': "bookmark", id: id + '_start', style: styles}, chr));
+				rng.insertNode(dom.create('span', {'data-mon-type': "bookmark", id: id + '_start', style: styles}, chr));
 			}
 
 			selection.moveToBookmark({id: id, keep: 1});
@@ -395,7 +395,7 @@ define("tinymce/dom/BookmarkManager", [
 			function addBogus(node) {
 				// Adds a bogus BR element for empty block elements
 				if (dom.isBlock(node) && !node.innerHTML && !Env.ie) {
-					node.innerHTML = '<br data-mce-bogus="1" />';
+					node.innerHTML = '<br data-mon-bogus="1" />';
 				}
 
 				return node;
@@ -457,7 +457,7 @@ define("tinymce/dom/BookmarkManager", [
 	 * @return {Boolean} true/false if the node is a bookmark node or not.
 	 */
 	BookmarkManager.isBookmarkNode = function(node) {
-		return node && node.tagName === 'SPAN' && node.getAttribute('data-mce-type') === 'bookmark';
+		return node && node.tagName === 'SPAN' && node.getAttribute('data-mon-type') === 'bookmark';
 	};
 
 	return BookmarkManager;

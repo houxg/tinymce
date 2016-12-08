@@ -33,11 +33,11 @@ ModuleLoader.require([
 		$fakeCaretElm = $('#view').children();
 
 		equal($fakeCaretElm[0].nodeName, 'P');
-		equal($fakeCaretElm.attr('data-mce-caret'), 'before');
+		equal($fakeCaretElm.attr('data-mon-caret'), 'before');
 		Utils.assertRange(rng, Utils.createRange($fakeCaretElm[0], 0, $fakeCaretElm[0], 0));
 
 		fakeCaret.hide();
-		equal($('#view *[data-mce-caret]').length, 0);
+		equal($('#view *[data-mon-caret]').length, 0);
 	});
 
 	test('show/hide (before, block)', function() {
@@ -49,11 +49,11 @@ ModuleLoader.require([
 		$fakeCaretElm = $('#view').children();
 
 		equal($fakeCaretElm[1].nodeName, 'P');
-		equal($fakeCaretElm.eq(1).attr('data-mce-caret'), 'after');
+		equal($fakeCaretElm.eq(1).attr('data-mon-caret'), 'after');
 		Utils.assertRange(rng, Utils.createRange($fakeCaretElm[1], 0, $fakeCaretElm[1], 0));
 
 		fakeCaret.hide();
-		equal($('#view *[data-mce-caret]').length, 0);
+		equal($('#view *[data-mon-caret]').length, 0);
 	});
 
 	test('show/hide (before, inline)', function() {

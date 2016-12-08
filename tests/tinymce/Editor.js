@@ -228,7 +228,7 @@ test('custom elements', function() {
 
 test('Store/restore tabindex', function() {
 	editor.setContent('<span tabindex="42">abc</span>');
-	equal(editor.getContent({format: 'raw'}).toLowerCase(), '<p><span data-mce-tabindex="42">abc</span></p>');
+	equal(editor.getContent({format: 'raw'}).toLowerCase(), '<p><span data-mon-tabindex="42">abc</span></p>');
 	equal(editor.getContent(), '<p><span tabindex="42">abc</span></p>');
 });
 

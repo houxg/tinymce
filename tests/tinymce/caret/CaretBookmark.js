@@ -50,7 +50,7 @@ ModuleLoader.require([
 	});
 
 	test('create br element index', function() {
-		setupHtml('<p><br data-mce-bogus="1"></p><p><br></p>');
+		setupHtml('<p><br data-mon-bogus="1"></p><p><br></p>');
 		equal(CaretBookmark.create(getRoot(), CaretPosition.before(getRoot().firstChild.firstChild)), 'p[0]/br[0],before');
 		equal(CaretBookmark.create(getRoot(), CaretPosition.before(getRoot().lastChild.firstChild)), 'p[1]/br[0],before');
 	});
@@ -71,7 +71,7 @@ ModuleLoader.require([
 	});
 
 	test('create element index from bogus', function() {
-		setupHtml('<b></b><span data-mce-bogus="1"><b></b><span data-mce-bogus="1"><b></b><b></b></span></span>');
+		setupHtml('<b></b><span data-mon-bogus="1"><b></b><span data-mon-bogus="1"><b></b><b></b></span></span>');
 		equal(CaretBookmark.create(getRoot(), CaretPosition.before(getRoot().lastChild.lastChild.childNodes[1])), 'b[3],before');
 	});
 

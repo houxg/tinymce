@@ -45,7 +45,7 @@ define("tinymce/DragDropOverrides", [
 
 	var cloneElement = function (elm) {
 		var cloneElm = elm.cloneNode(true);
-		cloneElm.removeAttribute('data-mce-selected');
+		cloneElm.removeAttribute('data-mon-selected');
 		return cloneElm;
 	};
 
@@ -53,11 +53,11 @@ define("tinymce/DragDropOverrides", [
 		var clonedElm = elm.cloneNode(true);
 
 		editor.dom.setStyles(clonedElm, {width: width, height: height});
-		editor.dom.setAttrib(clonedElm, 'data-mce-selected', null);
+		editor.dom.setAttrib(clonedElm, 'data-mon-selected', null);
 
 		var ghostElm = editor.dom.create('div', {
 			'class': 'mce-drag-container',
-			'data-mce-bogus': 'all',
+			'data-mon-bogus': 'all',
 			unselectable: 'on',
 			contenteditable: 'false'
 		});

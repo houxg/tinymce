@@ -318,8 +318,8 @@ test('Exclude internal elements', function() {
 
 	editor.getBody().innerHTML = (
 		'test' +
-		'<img src="about:blank" data-mce-selected="1" />' +
-		'<table data-mce-selected="1"><tr><td>x</td></tr></table>'
+		'<img src="about:blank" data-mon-selected="1" />' +
+		'<table data-mon-selected="1"><tr><td>x</td></tr></table>'
 	);
 
 	editor.undoManager.add();
@@ -331,12 +331,12 @@ test('Exclude internal elements', function() {
 	);
 
 	editor.getBody().innerHTML = (
-		'<span data-mce-bogus="1">\u200B</span>' +
-		'<span data-mce-bogus="1">\uFEFF</span>' +
-		'<div data-mce-bogus="all"></div>' +
-		'<div data-mce-bogus="all"><div><b>x</b></div></div>' +
-		'<img src="about:blank" data-mce-bogus="all">' +
-		'<br data-mce-bogus="1">' +
+		'<span data-mon-bogus="1">\u200B</span>' +
+		'<span data-mon-bogus="1">\uFEFF</span>' +
+		'<div data-mon-bogus="all"></div>' +
+		'<div data-mon-bogus="all"><div><b>x</b></div></div>' +
+		'<img src="about:blank" data-mon-bogus="all">' +
+		'<br data-mon-bogus="1">' +
 		'test' +
 		'\u200B' +
 		'<img src="about:blank" />' +
@@ -346,7 +346,7 @@ test('Exclude internal elements', function() {
 	editor.undoManager.add();
 	equal(count, 2);
 	equal(Utils.cleanHtml(lastLevel.content),
-		'<br data-mce-bogus="1">' +
+		'<br data-mon-bogus="1">' +
 		'test' +
 		'\u200B' +
 		'<img src="about:blank">' +

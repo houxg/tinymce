@@ -240,7 +240,7 @@
 
 		DOM.setAttrib('test', 'src', 'url');
 		equal(DOM.getAttrib('test', 'src'), 'url');
-		equal(DOM.getAttrib('test', 'data-mce-src'), 'url');
+		equal(DOM.getAttrib('test', 'data-mon-src'), 'url');
 		equal(DOM.getAttrib('test', 'abc'), '');
 
 		DOM.setAttribs('test', {'class' : '123', title : 'abc'});
@@ -623,25 +623,25 @@
 		DOM.setHTML('test', '<img src="tinymce/ui/img/raster.gif">');
 		ok(!DOM.isEmpty(DOM.get('test')), 'Non empty html with img element');
 
-		DOM.setHTML('test', '<span data-mce-bookmark="1"></span>');
+		DOM.setHTML('test', '<span data-mon-bookmark="1"></span>');
 		ok(!DOM.isEmpty(DOM.get('test')), 'Span with bookmark attribute.');
 
-		DOM.setHTML('test', '<span data-mce-style="color:Red"></span>');
+		DOM.setHTML('test', '<span data-mon-style="color:Red"></span>');
 		ok(DOM.isEmpty(DOM.get('test')), 'Span with data-mce attribute.');
 
 		DOM.setHTML('test', '<div><!-- comment --></div>');
 		ok(!DOM.isEmpty(DOM.get('test')), 'Element with comment.');
 
-		DOM.setHTML('test', '<span data-mce-bogus="1"></span>');
+		DOM.setHTML('test', '<span data-mon-bogus="1"></span>');
 		ok(DOM.isEmpty(DOM.get('test')), 'Contains just a bogus element.');
 
-		DOM.setHTML('test', '<span data-mce-bogus="1">a</span>');
+		DOM.setHTML('test', '<span data-mon-bogus="1">a</span>');
 		ok(!DOM.isEmpty(DOM.get('test')), 'Contains a text node in a bogus element.');
 
-		DOM.setHTML('test', '<span data-mce-bogus="all">a</span>');
+		DOM.setHTML('test', '<span data-mon-bogus="all">a</span>');
 		ok(DOM.isEmpty(DOM.get('test')), 'Contains just a bogus all element.');
 
-		DOM.setHTML('test', '<span data-mce-bogus="all">a</span>b');
+		DOM.setHTML('test', '<span data-mon-bogus="all">a</span>b');
 		ok(!DOM.isEmpty(DOM.get('test')), 'Contains a bogus all element but some text as well.');
 
 		DOM.remove('test');

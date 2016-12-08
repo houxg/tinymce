@@ -57,7 +57,7 @@ define("tinymce/EditorUpload", [
 
 		function replaceImageUrl(content, targetUrl, replacementUrl) {
 			content = replaceString(content, 'src="' + targetUrl + '"', 'src="' + replacementUrl + '"');
-			content = replaceString(content, 'data-mce-src="' + targetUrl + '"', 'data-mce-src="' + replacementUrl + '"');
+			content = replaceString(content, 'data-mon-src="' + targetUrl + '"', 'data-mon-src="' + replacementUrl + '"');
 
 			return content;
 		}
@@ -89,7 +89,7 @@ define("tinymce/EditorUpload", [
 
 			editor.$(image).attr({
 				src: settings.images_reuse_filename ? resultUri + cacheInvalidator() : resultUri,
-				'data-mce-src': editor.convertURL(resultUri, 'src')
+				'data-mon-src': editor.convertURL(resultUri, 'src')
 			});
 		}
 
@@ -152,7 +152,7 @@ define("tinymce/EditorUpload", [
 				Arr.each(result, function(resultItem) {
 					replaceUrlInUndoStack(resultItem.image.src, resultItem.blobInfo.blobUri());
 					resultItem.image.src = resultItem.blobInfo.blobUri();
-					resultItem.image.removeAttribute('data-mce-src');
+					resultItem.image.removeAttribute('data-mon-src');
 				});
 
 				return result;

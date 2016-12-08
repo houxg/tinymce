@@ -16,7 +16,7 @@ define('tinymce/inlite/alien/Bookmark', [
 	 * added to them since they can be restored after a dom operation.
 	 *
 	 * So this: <p><b>|</b><b>|</b></p>
-	 * becomes: <p><b><span data-mce-type="bookmark">|</span></b><b data-mce-type="bookmark">|</span></b></p>
+	 * becomes: <p><b><span data-mon-type="bookmark">|</span></b><b data-mon-type="bookmark">|</span></b></p>
 	 *
 	 * @param  {DOMRange} rng DOM Range to get bookmark on.
 	 * @return {Object} Bookmark object.
@@ -31,7 +31,7 @@ define('tinymce/inlite/alien/Bookmark', [
 			offset = rng[start ? 'startOffset' : 'endOffset'];
 
 			if (container.nodeType == 1) {
-				offsetNode = dom.create('span', {'data-mce-type': 'bookmark'});
+				offsetNode = dom.create('span', {'data-mon-type': 'bookmark'});
 
 				if (container.hasChildNodes()) {
 					offset = Math.min(offset, container.childNodes.length - 1);
@@ -79,8 +79,8 @@ define('tinymce/inlite/alien/Bookmark', [
 						return idx;
 					}
 
-					// Skip data-mce-type=bookmark nodes
-					if (node.nodeType != 1 || node.getAttribute('data-mce-type') != 'bookmark') {
+					// Skip data-mon-type=bookmark nodes
+					if (node.nodeType != 1 || node.getAttribute('data-mon-type') != 'bookmark') {
 						idx++;
 					}
 

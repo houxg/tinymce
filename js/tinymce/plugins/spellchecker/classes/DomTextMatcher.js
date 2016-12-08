@@ -175,7 +175,7 @@ define("tinymce/spellcheckerplugin/DomTextMatcher", [], function() {
 				}
 
 				var clone = match.stencil.cloneNode(false);
-				clone.setAttribute('data-mce-index', matchIndex);
+				clone.setAttribute('data-mon-index', matchIndex);
 
 				if (fill) {
 					clone.appendChild(dom.doc.createTextNode(fill));
@@ -254,7 +254,7 @@ define("tinymce/spellcheckerplugin/DomTextMatcher", [], function() {
 			index = typeof index == "number" ? "" + index : null;
 
 			for (var i = 0; i < elements.length; i++) {
-				var element = elements[i], dataIndex = element.getAttribute('data-mce-index');
+				var element = elements[i], dataIndex = element.getAttribute('data-mon-index');
 
 				if (dataIndex !== null && dataIndex.length) {
 					if (dataIndex === index || index === null) {
@@ -378,7 +378,7 @@ define("tinymce/spellcheckerplugin/DomTextMatcher", [], function() {
 		 * @return {Object} Match object for the specified element.
 		 */
 		function matchFromElement(element) {
-			return matches[element.getAttribute('data-mce-index')];
+			return matches[element.getAttribute('data-mon-index')];
 		}
 
 		/**

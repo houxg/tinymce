@@ -540,8 +540,8 @@ define("tinymce/util/Quirks", [
 						elm.setAttribute('mce-data-marked', 1);
 					}
 
-					// Make sure all elements has a data-mce-style attribute
-					if (!elm.hasAttribute('data-mce-style') && elm.hasAttribute('style')) {
+					// Make sure all elements has a data-mon-style attribute
+					if (!elm.hasAttribute('data-mon-style') && elm.hasAttribute('style')) {
 						editor.dom.setAttrib(elm, 'style', editor.dom.getAttrib(elm, 'style'));
 					}
 				});
@@ -567,7 +567,7 @@ define("tinymce/util/Quirks", [
 
 					// Restore style attribute to previous value
 					if (record.attributeName == "style") {
-						var oldValue = record.target.getAttribute('data-mce-style');
+						var oldValue = record.target.getAttribute('data-mon-style');
 
 						if (oldValue) {
 							record.target.setAttribute("style", oldValue);
@@ -1227,7 +1227,7 @@ define("tinymce/util/Quirks", [
 							parentNode = parentNode.parentNode;
 						}
 
-						dom.add(parentNode, 'br', {'data-mce-bogus': 1});
+						dom.add(parentNode, 'br', {'data-mon-bogus': 1});
 					}
 				});
 			}
@@ -1303,7 +1303,7 @@ define("tinymce/util/Quirks", [
 						textNode = node.firstChild;
 
 						if (textNode) {
-							node.attr('data-mce-innertext', textNode.value);
+							node.attr('data-mon-innertext', textNode.value);
 						}
 					}
 				});
@@ -1319,9 +1319,9 @@ define("tinymce/util/Quirks", [
 							textNode.value = Entities.decode(textNode.value);
 						} else {
 							// Old IE can't retain noscript value so an attribute is used to store it
-							value = node.attributes.map['data-mce-innertext'];
+							value = node.attributes.map['data-mon-innertext'];
 							if (value) {
-								node.attr('data-mce-innertext', null);
+								node.attr('data-mon-innertext', null);
 								textNode = new Node('#text', 3);
 								textNode.value = value;
 								textNode.raw = true;

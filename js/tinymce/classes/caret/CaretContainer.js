@@ -27,7 +27,7 @@ define("tinymce/caret/CaretContainer", [
 			node = node.parentNode;
 		}
 
-		return isElement(node) && node.hasAttribute('data-mce-caret');
+		return isElement(node) && node.hasAttribute('data-mon-caret');
 	}
 
 	function isCaretContainerInline(node) {
@@ -107,7 +107,7 @@ define("tinymce/caret/CaretContainer", [
 
 	function createBogusBr() {
 		var br = document.createElement('br');
-		br.setAttribute('data-mce-bogus', '1');
+		br.setAttribute('data-mon-bogus', '1');
 		return br;
 	}
 
@@ -116,8 +116,8 @@ define("tinymce/caret/CaretContainer", [
 
 		doc = node.ownerDocument;
 		blockNode = doc.createElement(blockName);
-		blockNode.setAttribute('data-mce-caret', before ? 'before' : 'after');
-		blockNode.setAttribute('data-mce-bogus', 'all');
+		blockNode.setAttribute('data-mon-caret', before ? 'before' : 'after');
+		blockNode.setAttribute('data-mon-bogus', 'all');
 		blockNode.appendChild(createBogusBr());
 		parentNode = node.parentNode;
 
@@ -141,7 +141,7 @@ define("tinymce/caret/CaretContainer", [
 	function remove(caretContainerNode) {
 		if (isElement(caretContainerNode) && isCaretContainer(caretContainerNode)) {
 			if (hasContent(caretContainerNode)) {
-				caretContainerNode.removeAttribute('data-mce-caret');
+				caretContainerNode.removeAttribute('data-mon-caret');
 			} else {
 				removeNode(caretContainerNode);
 			}
@@ -170,10 +170,10 @@ define("tinymce/caret/CaretContainer", [
 	}
 
 	function showCaretContainerBlock(caretContainer) {
-		if (caretContainer && caretContainer.hasAttribute('data-mce-caret')) {
+		if (caretContainer && caretContainer.hasAttribute('data-mon-caret')) {
 			trimBogusBr(caretContainer);
-			caretContainer.removeAttribute('data-mce-caret');
-			caretContainer.removeAttribute('data-mce-bogus');
+			caretContainer.removeAttribute('data-mon-caret');
+			caretContainer.removeAttribute('data-mon-bogus');
 			caretContainer.removeAttribute('style');
 			caretContainer.removeAttribute('_moz_abspos');
 			return caretContainer;

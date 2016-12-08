@@ -516,16 +516,16 @@
 		counter.validate = true;
 		parser = new tinymce.html.SaxParser(counter, schema);
 		writer.reset();
-		parser.parse('<span id="id"><b>text</b></span><span id="id" data-mce-type="something"></span>');
-		equal(writer.getContent(), '<b>text</b><span id="id" data-mce-type="something"></span>', 'Preserve internal span element without any span schema rule.');
+		parser.parse('<span id="id"><b>text</b></span><span id="id" data-mon-type="something"></span>');
+		equal(writer.getContent(), '<b>text</b><span id="id" data-mon-type="something"></span>', 'Preserve internal span element without any span schema rule.');
 
 		schema = new tinymce.html.Schema({valid_elements : 'b,span[class]'});
 		counter = createCounter(writer);
 		counter.validate = true;
 		parser = new tinymce.html.SaxParser(counter, schema);
 		writer.reset();
-		parser.parse('<span id="id" class="class"><b>text</b></span><span id="id" data-mce-type="something"></span>');
-		equal(writer.getContent(), '<span class="class"><b>text</b></span><span id="id" data-mce-type="something"></span>', 'Preserve internal span element with a span schema rule.');
+		parser.parse('<span id="id" class="class"><b>text</b></span><span id="id" data-mon-type="something"></span>');
+		equal(writer.getContent(), '<span class="class"><b>text</b></span><span id="id" data-mon-type="something"></span>', 'Preserve internal span element with a span schema rule.');
 	});
 
 	test('Remove internal elements', function() {
@@ -539,7 +539,7 @@
 		counter.remove_internals = true;
 		parser = new tinymce.html.SaxParser(counter, schema);
 		writer.reset();
-		parser.parse('<span id="id"><b>text</b></span><span id="id" data-mce-type="something"></span>');
+		parser.parse('<span id="id"><b>text</b></span><span id="id" data-mon-type="something"></span>');
 		equal(writer.getContent(), '<b>text</b>', 'Remove internal span element without any span schema rule.');
 
 		schema = new tinymce.html.Schema({valid_elements : 'b,span[class]'});
@@ -548,7 +548,7 @@
 		counter.remove_internals = true;
 		parser = new tinymce.html.SaxParser(counter, schema);
 		writer.reset();
-		parser.parse('<span id="id" class="class"><b>text</b></span><span id="id" data-mce-type="something"></span>');
+		parser.parse('<span id="id" class="class"><b>text</b></span><span id="id" data-mon-type="something"></span>');
 		equal(writer.getContent(), '<span class="class"><b>text</b></span>', 'Remove internal span element with a span schema rule.');
 
 		// Reset
@@ -697,17 +697,17 @@
 			deepEqual(counter.counts, counters);
 		}
 
-		testBogusSaxParse('a<b data-mce-bogus="1">b</b>c', 'abc', {text: 3});
-		testBogusSaxParse('a<b data-mce-bogus="true">b</b>c', 'abc', {text: 3});
-		testBogusSaxParse('a<b data-mce-bogus="1"></b>c', 'ac', {text: 2});
-		testBogusSaxParse('a<b data-mce-bogus="all">b</b>c', 'ac', {text: 2});
-		testBogusSaxParse('a<b data-mce-bogus="all"><!-- x --><?xml?></b>c', 'ac', {text: 2});
-		testBogusSaxParse('a<b data-mce-bogus="all"><b>b</b></b>c', 'ac', {text: 2});
-		testBogusSaxParse('a<b data-mce-bogus="all"><br>b</b><b>c</b>', 'a<b>c</b>', {start: 1, end: 1, text: 2});
-		testBogusSaxParse('a<b data-mce-bogus="all"><img>b</b><b>c</b>', 'a<b>c</b>', {start: 1, end: 1, text: 2});
-		testBogusSaxParse('a<b data-mce-bogus="all"><b attr="x">b</b></b>c', 'ac', {text: 2});
-		testBogusSaxParse('a<b data-mce-bogus="all"></b>c', 'ac', {text: 2});
-		testBogusSaxParse('a<b data-mce-bogus="all"></b><b>c</b>', 'a<b>c</b>', {start: 1, end: 1, text:2});
+		testBogusSaxParse('a<b data-mon-bogus="1">b</b>c', 'abc', {text: 3});
+		testBogusSaxParse('a<b data-mon-bogus="true">b</b>c', 'abc', {text: 3});
+		testBogusSaxParse('a<b data-mon-bogus="1"></b>c', 'ac', {text: 2});
+		testBogusSaxParse('a<b data-mon-bogus="all">b</b>c', 'ac', {text: 2});
+		testBogusSaxParse('a<b data-mon-bogus="all"><!-- x --><?xml?></b>c', 'ac', {text: 2});
+		testBogusSaxParse('a<b data-mon-bogus="all"><b>b</b></b>c', 'ac', {text: 2});
+		testBogusSaxParse('a<b data-mon-bogus="all"><br>b</b><b>c</b>', 'a<b>c</b>', {start: 1, end: 1, text: 2});
+		testBogusSaxParse('a<b data-mon-bogus="all"><img>b</b><b>c</b>', 'a<b>c</b>', {start: 1, end: 1, text: 2});
+		testBogusSaxParse('a<b data-mon-bogus="all"><b attr="x">b</b></b>c', 'ac', {text: 2});
+		testBogusSaxParse('a<b data-mon-bogus="all"></b>c', 'ac', {text: 2});
+		testBogusSaxParse('a<b data-mon-bogus="all"></b><b>c</b>', 'a<b>c</b>', {start: 1, end: 1, text:2});
 	});
 
 	test('findEndTag', function() {

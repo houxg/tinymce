@@ -202,7 +202,7 @@ define("tinymce/caret/CaretUtils", [
 				container = container.parentNode;
 			}
 
-			location = container.getAttribute('data-mce-caret');
+			location = container.getAttribute('data-mon-caret');
 
 			if (location == 'before') {
 				node = container.nextSibling;

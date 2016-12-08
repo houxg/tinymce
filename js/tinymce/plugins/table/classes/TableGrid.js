@@ -28,7 +28,7 @@ define("tinymce/tableplugin/TableGrid", [
 		var grid, gridWidth, startPos, endPos, selection = editor.selection, dom = selection.dom;
 
 		function removeCellSelection() {
-			editor.$('td[data-mce-selected],th[data-mce-selected]').removeAttr('data-mce-selected');
+			editor.$('td[data-mon-selected],th[data-mon-selected]').removeAttr('data-mon-selected');
 		}
 
 		function isEditorBody(node) {
@@ -148,7 +148,7 @@ define("tinymce/tableplugin/TableGrid", [
 		}
 
 		function isCellSelected(cell) {
-			return cell && (!!dom.getAttrib(cell.elm, 'data-mce-selected') || cell == selectedCell);
+			return cell && (!!dom.getAttrib(cell.elm, 'data-mon-selected') || cell == selectedCell);
 		}
 
 		function getSelectedRows() {
@@ -156,7 +156,7 @@ define("tinymce/tableplugin/TableGrid", [
 
 			each(table.rows, function(row) {
 				each(row.cells, function(cell) {
-					if (dom.getAttrib(cell, 'data-mce-selected') || (selectedCell && cell == selectedCell.elm)) {
+					if (dom.getAttrib(cell, 'data-mon-selected') || (selectedCell && cell == selectedCell.elm)) {
 						rows.push(row);
 						return false;
 					}
@@ -214,7 +214,7 @@ define("tinymce/tableplugin/TableGrid", [
 
 					// Add something to the inner node
 					if (curNode) {
-						curNode.innerHTML = Env.ie && Env.ie < 10 ? '&nbsp;' : '<br data-mce-bogus="1" />';
+						curNode.innerHTML = Env.ie && Env.ie < 10 ? '&nbsp;' : '<br data-mon-bogus="1" />';
 					}
 
 					return false;
@@ -960,7 +960,7 @@ define("tinymce/tableplugin/TableGrid", [
 				for (y = startY; y <= maxY; y++) {
 					for (x = startX; x <= maxX; x++) {
 						if (grid[y][x]) {
-							dom.setAttrib(grid[y][x].elm, 'data-mce-selected', '1');
+							dom.setAttrib(grid[y][x].elm, 'data-mon-selected', '1');
 						}
 					}
 				}

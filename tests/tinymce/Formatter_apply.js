@@ -1610,7 +1610,7 @@ test('Align nested table cell to same as parent', function() {
 });
 
 test('Apply ID format to around existing bookmark node', function() {
-	editor.getBody().innerHTML = '<p>a<span id="b" data-mce-type="bookmark"></span>b</p>';
+	editor.getBody().innerHTML = '<p>a<span id="b" data-mon-type="bookmark"></span>b</p>';
 
 	var rng = editor.dom.createRng();
 	rng.setStart(editor.dom.select('p')[0].firstChild, 0);
@@ -1625,7 +1625,7 @@ test('Apply ID format to around existing bookmark node', function() {
 	});
 	editor.formatter.apply('format');
 
-	equal(Utils.normalizeHtml(editor.getBody().innerHTML), '<p><span id="id">a<span data-mce-type="bookmark" id="b"></span>b</span></p>');
+	equal(Utils.normalizeHtml(editor.getBody().innerHTML), '<p><span id="id">a<span data-mon-type="bookmark" id="b"></span>b</span></p>');
 });
 
 test('Bug #5134 - TinyMCE removes formatting tags in the getContent', function() {

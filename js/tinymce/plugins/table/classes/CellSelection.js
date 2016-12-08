@@ -28,7 +28,7 @@ define("tinymce/tableplugin/CellSelection", [
 			editor.getBody().style.webkitUserSelect = '';
 
 			if (force || hasCellSelection) {
-				editor.$('td[data-mce-selected],th[data-mce-selected]').removeAttr('data-mce-selected');
+				editor.$('td[data-mon-selected],th[data-mon-selected]').removeAttr('data-mon-selected');
 				hasCellSelection = false;
 			}
 		}
@@ -162,7 +162,7 @@ define("tinymce/tableplugin/CellSelection", [
 				}
 
 				// Try to expand text selection as much as we can only Gecko supports cell selection
-				selectedCells = dom.select('td[data-mce-selected],th[data-mce-selected]');
+				selectedCells = dom.select('td[data-mon-selected],th[data-mon-selected]');
 				if (selectedCells.length > 0) {
 					rng = dom.createRng();
 					node = selectedCells[0];
@@ -174,7 +174,7 @@ define("tinymce/tableplugin/CellSelection", [
 
 					do {
 						if (node.nodeName == 'TD' || node.nodeName == 'TH') {
-							if (!dom.getAttrib(node, 'data-mce-selected')) {
+							if (!dom.getAttrib(node, 'data-mon-selected')) {
 								break;
 							}
 

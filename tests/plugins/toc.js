@@ -41,7 +41,7 @@
     }
 
 	function trimBr(html) {
-		return html.replace(/<br data-mce-bogus="1" \/>/g, '');
+		return html.replace(/<br data-mon-bogus="1" \/>/g, '');
 	}
 
     test("mceInsertToc", function() {
@@ -66,7 +66,7 @@
 
         ok(!$toc.find('ul ul ul').length, "no levels beyond 2 are included");
 
-        stripAttribs($toc, ['data-mce-href', 'data-mce-selected']);
+        stripAttribs($toc, ['data-mon-href', 'data-mon-selected']);
 
         equal(trimBr(Utils.normalizeHtml($toc[0].outerHTML)),
             '<div class="tst-toc" contenteditable="false">' +
@@ -104,7 +104,7 @@
 
         var $toc = editor.$('.tst-toc');
 
-        stripAttribs($toc, ['data-mce-href', 'data-mce-selected']);
+        stripAttribs($toc, ['data-mon-href', 'data-mon-selected']);
 
         equal(trimBr(Utils.normalizeHtml($toc[0].innerHTML)),
             '<h3 contenteditable="true">Table of Contents</h3>' +
@@ -176,7 +176,7 @@
         deepEqual($toc.find(':first-child').attr('contentEditable'), "true",
             "cE added back to title after setContent()");
 
-        stripAttribs($toc, ['data-mce-href', 'data-mce-selected']);
+        stripAttribs($toc, ['data-mon-href', 'data-mon-selected']);
 
         equal(trimBr(Utils.normalizeHtml($toc[0].innerHTML)),
             '<h3 contenteditable="true">Table of Contents</h3>' +

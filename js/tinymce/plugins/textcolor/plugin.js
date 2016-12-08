@@ -106,7 +106,7 @@ tinymce.PluginManager.add('textcolor', function(editor) {
 			return (
 				'<td class="mce-grid-cell' + (isNoColor ? ' mce-colorbtn-trans' : '') + '">' +
 					'<div id="' + id + '-' + (count++) + '"' +
-						' data-mce-color="' + (color ? color : '') + '"' +
+						' data-mon-color="' + (color ? color : '') + '"' +
 						' role="option"' +
 						' tabIndex="-1"' +
 						' style="' + (color ? 'background-color: ' + color : '') + '"' +
@@ -204,7 +204,7 @@ tinymce.PluginManager.add('textcolor', function(editor) {
 
 		function setDivColor(div, value) {
 			div.style.background = value;
-			div.setAttribute('data-mce-color', value);
+			div.setAttribute('data-mon-color', value);
 		}
 
 		if (tinymce.DOM.getParent(e.target, '.mce-custom-color-btn')) {
@@ -220,7 +220,7 @@ tinymce.PluginManager.add('textcolor', function(editor) {
 
 				for (i = 0; i < customColorCells.length; i++) {
 					div = customColorCells[i];
-					if (!div.getAttribute('data-mce-color')) {
+					if (!div.getAttribute('data-mon-color')) {
 						break;
 					}
 				}
@@ -229,7 +229,7 @@ tinymce.PluginManager.add('textcolor', function(editor) {
 				// TODO: Might need to be the left on RTL
 				if (i == cols[type]) {
 					for (i = 0; i < cols[type] - 1; i++) {
-						setDivColor(customColorCells[i], customColorCells[i + 1].getAttribute('data-mce-color'));
+						setDivColor(customColorCells[i], customColorCells[i + 1].getAttribute('data-mon-color'));
 					}
 				}
 
@@ -238,7 +238,7 @@ tinymce.PluginManager.add('textcolor', function(editor) {
 			}, getCurrentColor(buttonCtrl.settings.format));
 		}
 
-		value = e.target.getAttribute('data-mce-color');
+		value = e.target.getAttribute('data-mon-color');
 		if (value) {
 			if (this.lastId) {
 				document.getElementById(this.lastId).setAttribute('aria-selected', false);

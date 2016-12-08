@@ -211,7 +211,7 @@ ModuleLoader.require([
 
 	test('normalizeRange at block caret container', function() {
 		setupHtml(
-			'<p data-mce-caret="before">\u00a0</p><p contentEditable="false">1</p><p data-mce-caret="after">\u00a0</p>'
+			'<p data-mon-caret="before">\u00a0</p><p contentEditable="false">1</p><p data-mon-caret="after">\u00a0</p>'
 		);
 
 		assertRange(CaretUtils.normalizeRange(1, getRoot(), createRange(findElm('p:first').firstChild, 0)), createRange(getRoot(), 1));

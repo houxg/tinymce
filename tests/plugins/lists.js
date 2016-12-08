@@ -2627,7 +2627,7 @@ ModuleLoader.require([
 		equal(editor.getBody().innerHTML,
 			'<p>a</p>' +
 			'<p>b</p>' +
-			'<p><br data-mce-bogus="1"></p>'
+			'<p><br data-mon-bogus="1"></p>'
 		);
 	});
 
@@ -2652,11 +2652,11 @@ ModuleLoader.require([
 		equal(editor.getBody().innerHTML,
 			'<p>a</p>' +
 			'<p>b</p>' +
-			'<p><br data-mce-bogus=\"1\"></p>' +
+			'<p><br data-mon-bogus=\"1\"></p>' +
 			'<p>c</p>' +
-			'<p><br data-mce-bogus=\"1\"></p>' +
+			'<p><br data-mon-bogus=\"1\"></p>' +
 			'<p>d</p>' +
-			'<p><br data-mce-bogus=\"1\"></p>' +
+			'<p><br data-mon-bogus=\"1\"></p>' +
 			'<p>e</p>'
 		);
 	});
@@ -2677,7 +2677,7 @@ ModuleLoader.require([
 		equal(editor.getBody().innerHTML,
 			'<p>a</p>' +
 			'<p>b</p>' +
-			'<p><br data-mce-bogus="1"></p>'
+			'<p><br data-mon-bogus="1"></p>'
 		);
 	});
 
@@ -2702,11 +2702,11 @@ ModuleLoader.require([
 		equal(editor.getBody().innerHTML,
 			'<p>a</p>' +
 			'<p>b</p>' +
-			'<p><br data-mce-bogus=\"1\"></p>' +
+			'<p><br data-mon-bogus=\"1\"></p>' +
 			'<p>c</p>' +
-			'<p><br data-mce-bogus=\"1\"></p>' +
+			'<p><br data-mon-bogus=\"1\"></p>' +
 			'<p>d</p>' +
-			'<p><br data-mce-bogus=\"1\"></p>' +
+			'<p><br data-mon-bogus=\"1\"></p>' +
 			'<p>e</p>'
 		);
 	});

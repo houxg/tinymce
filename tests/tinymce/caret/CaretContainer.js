@@ -28,24 +28,24 @@ ModuleLoader.require([
 	test('isCaretContainer', function() {
 		equal(CaretContainer.isCaretContainer(document.createTextNode('text')), false);
 		equal(CaretContainer.isCaretContainer($('<span></span>')[0]), false);
-		equal(CaretContainer.isCaretContainer($('<span data-mce-caret="1"></span>')[0]), true);
-		equal(CaretContainer.isCaretContainer($('<span data-mce-caret="1">x</span>')[0].firstChild), true);
+		equal(CaretContainer.isCaretContainer($('<span data-mon-caret="1"></span>')[0]), true);
+		equal(CaretContainer.isCaretContainer($('<span data-mon-caret="1">x</span>')[0].firstChild), true);
 		equal(CaretContainer.isCaretContainer(document.createTextNode(Zwsp.ZWSP)), true);
 	});
 
 	test('isCaretContainerBlock', function() {
 		equal(CaretContainer.isCaretContainerBlock(document.createTextNode('text')), false);
 		equal(CaretContainer.isCaretContainerBlock($('<span></span>')[0]), false);
-		equal(CaretContainer.isCaretContainerBlock($('<span data-mce-caret="1"></span>')[0]), true);
-		equal(CaretContainer.isCaretContainerBlock($('<span data-mce-caret="1">a</span>')[0].firstChild), true);
+		equal(CaretContainer.isCaretContainerBlock($('<span data-mon-caret="1"></span>')[0]), true);
+		equal(CaretContainer.isCaretContainerBlock($('<span data-mon-caret="1">a</span>')[0].firstChild), true);
 		equal(CaretContainer.isCaretContainerBlock(document.createTextNode(Zwsp.ZWSP)), false);
 	});
 
 	test('isCaretContainerInline', function() {
 		equal(CaretContainer.isCaretContainerInline(document.createTextNode('text')), false);
 		equal(CaretContainer.isCaretContainerInline($('<span></span>')[0]), false);
-		equal(CaretContainer.isCaretContainerInline($('<span data-mce-caret="1"></span>')[0]), false);
-		equal(CaretContainer.isCaretContainerInline($('<span data-mce-caret="1">a</span>')[0].firstChild), false);
+		equal(CaretContainer.isCaretContainerInline($('<span data-mon-caret="1"></span>')[0]), false);
+		equal(CaretContainer.isCaretContainerInline($('<span data-mon-caret="1">a</span>')[0].firstChild), false);
 		equal(CaretContainer.isCaretContainerInline(document.createTextNode(Zwsp.ZWSP)), true);
 	});
 

@@ -65,7 +65,7 @@ define("tinymce/dom/Serializer", [
 	 * @param {tinymce.Editor} editor Optional editor to bind events to and get schema/dom from.
 	 */
 	return function(settings, editor) {
-		var dom, schema, htmlParser, tempAttrs = ["data-mce-selected"];
+		var dom, schema, htmlParser, tempAttrs = ["data-mon-selected"];
 
 		if (editor) {
 			dom = editor.dom;
@@ -74,8 +74,8 @@ define("tinymce/dom/Serializer", [
 
 		function trimHtml(html) {
 			var trimContentRegExp = new RegExp([
-				'<span[^>]+data-mce-bogus[^>]+>[\u200B\uFEFF]+<\\/span>', // Trim bogus spans like caret containers
-				'\\s?(' + tempAttrs.join('|') + ')="[^"]+"' // Trim temporaty data-mce prefixed attributes like data-mce-selected
+				'<span[^>]+data-mon-bogus[^>]+>[\u200B\uFEFF]+<\\/span>', // Trim bogus spans like caret containers
+				'\\s?(' + tempAttrs.join('|') + ')="[^"]+"' // Trim temporaty data-mce prefixed attributes like data-mon-selected
 			].join('|'), 'gi');
 
 			html = Zwsp.trim(html.replace(trimContentRegExp, ''));
@@ -85,7 +85,7 @@ define("tinymce/dom/Serializer", [
 
 		function trimContent(html) {
 			var content = html;
-			var bogusAllRegExp = /<(\w+) [^>]*data-mce-bogus="all"[^>]*>/g;
+			var bogusAllRegExp = /<(\w+) [^>]*data-mon-bogus="all"[^>]*>/g;
 			var endTagIndex, index, matchLength, matches, shortEndedElements, schema = editor.schema;
 
 			content = trimHtml(content);
@@ -111,9 +111,9 @@ define("tinymce/dom/Serializer", [
 
 		/**
 		 * Returns a trimmed version of the editor contents to be used for the undo level. This
-		 * will remove any data-mce-bogus="all" marked elements since these are used for UI it will also
-		 * remove the data-mce-selected attributes used for selection of objects and caret containers.
-		 * It will keep all data-mce-bogus="1" elements since these can be used to place the caret etc and will
+		 * will remove any data-mon-bogus="all" marked elements since these are used for UI it will also
+		 * remove the data-mon-selected attributes used for selection of objects and caret containers.
+		 * It will keep all data-mon-bogus="1" elements since these can be used to place the caret etc and will
 		 * be removed by the serialization logic when you save.
 		 *
 		 * @private
@@ -146,19 +146,19 @@ define("tinymce/dom/Serializer", [
 		htmlParser = new DomParser(settings, schema);
 
 		// Convert tabindex back to elements when serializing contents
-		htmlParser.addAttributeFilter('data-mce-tabindex', function(nodes, name) {
+		htmlParser.addAttributeFilter('data-mon-tabindex', function(nodes, name) {
 			var i = nodes.length, node;
 
 			while (i--) {
 				node = nodes[i];
-				node.attr('tabindex', node.attributes.map['data-mce-tabindex']);
+				node.attr('tabindex', node.attributes.map['data-mon-tabindex']);
 				node.attr(name, null);
 			}
 		});
 
-		// Convert move data-mce-src, data-mce-href and data-mce-style into nodes or process them if needed
+		// Convert move data-mon-src, data-mon-href and data-mon-style into nodes or process them if needed
 		htmlParser.addAttributeFilter('src,href,style', function(nodes, name) {
-			var i = nodes.length, node, value, internalName = 'data-mce-' + name;
+			var i = nodes.length, node, value, internalName = 'data-mon-' + name;
 			var urlConverter = settings.url_converter, urlConverterScope = settings.url_converter_scope, undef;
 
 			while (i--) {
@@ -200,13 +200,13 @@ define("tinymce/dom/Serializer", [
 		});
 
 		// Remove bookmark elements
-		htmlParser.addAttributeFilter('data-mce-type', function(nodes, name, args) {
+		htmlParser.addAttributeFilter('data-mon-type', function(nodes, name, args) {
 			var i = nodes.length, node;
 
 			while (i--) {
 				node = nodes[i];
 
-				if (node.attributes.map['data-mce-type'] === 'bookmark' && !args.cleanup) {
+				if (node.attributes.map['data-mon-type'] === 'bookmark' && !args.cleanup) {
 					node.remove();
 				}
 			}
@@ -315,9 +315,9 @@ define("tinymce/dom/Serializer", [
 
 		// Remove internal data attributes
 		htmlParser.addAttributeFilter(
-			'data-mce-src,data-mce-href,data-mce-style,' +
-			'data-mce-selected,data-mce-expando,' +
-			'data-mce-type,data-mce-resize',
+			'data-mon-src,data-mon-href,data-mon-style,' +
+			'data-mon-selected,data-mon-expando,' +
+			'data-mon-type,data-mon-resize',
 
 			function(nodes, name) {
 				var i = nodes.length;

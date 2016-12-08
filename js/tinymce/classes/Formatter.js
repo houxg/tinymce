@@ -425,7 +425,7 @@ define("tinymce/Formatter", [
 						var styleVal = dom.getAttrib(elm, 'style');
 
 						if (styleVal) {
-							elm.setAttribute('data-mce-style', styleVal);
+							elm.setAttribute('data-mon-style', styleVal);
 						}
 					}
 
@@ -737,7 +737,7 @@ define("tinymce/Formatter", [
 						applyRngStyle(node, null, true);
 					}
 				} else {
-					if (!isCollapsed || !format.inline || dom.select('td[data-mce-selected],th[data-mce-selected]').length) {
+					if (!isCollapsed || !format.inline || dom.select('td[data-mon-selected],th[data-mon-selected]').length) {
 						// Obtain selection node before selection is unselected by applyRngStyle()
 						var curSelNode = ed.selection.getNode();
 
@@ -941,15 +941,15 @@ define("tinymce/Formatter", [
 
 						if (dom.isChildOf(startContainer, endContainer) && !isBlock(endContainer) &&
 							!isTableCell(startContainer) && !isTableCell(endContainer)) {
-							startContainer = wrap(startContainer, 'span', {id: '_start', 'data-mce-type': 'bookmark'});
+							startContainer = wrap(startContainer, 'span', {id: '_start', 'data-mon-type': 'bookmark'});
 							splitToFormatRoot(startContainer);
 							startContainer = unwrap(TRUE);
 							return;
 						}
 
 						// Wrap start/end nodes in span element since these might be cloned/moved
-						startContainer = wrap(startContainer, 'span', {id: '_start', 'data-mce-type': 'bookmark'});
-						endContainer = wrap(endContainer, 'span', {id: '_end', 'data-mce-type': 'bookmark'});
+						startContainer = wrap(startContainer, 'span', {id: '_start', 'data-mon-type': 'bookmark'});
+						endContainer = wrap(endContainer, 'span', {id: '_end', 'data-mon-type': 'bookmark'});
 
 						// Split start/end
 						splitToFormatRoot(startContainer);
@@ -1017,7 +1017,7 @@ define("tinymce/Formatter", [
 				return;
 			}
 
-			if (!selection.isCollapsed() || !format.inline || dom.select('td[data-mce-selected],th[data-mce-selected]').length) {
+			if (!selection.isCollapsed() || !format.inline || dom.select('td[data-mon-selected],th[data-mon-selected]').length) {
 				bookmark = selection.getBookmark();
 				removeRngStyle(selection.getRng(TRUE));
 				selection.moveToBookmark(bookmark);
@@ -1268,7 +1268,7 @@ define("tinymce/Formatter", [
 
 					// Ignore bogus nodes like the <a> tag created by moveStart()
 					parents = Tools.grep(parents, function(node) {
-						return node.nodeType == 1 && !node.getAttribute('data-mce-bogus');
+						return node.nodeType == 1 && !node.getAttribute('data-mon-bogus');
 					});
 
 					// Check for new formats
@@ -1511,7 +1511,7 @@ define("tinymce/Formatter", [
 				root = dom.getRoot();
 
 				function isBogusBr(node) {
-					return node.nodeName == "BR" && node.getAttribute('data-mce-bogus') && !node.nextSibling;
+					return node.nodeName == "BR" && node.getAttribute('data-mon-bogus') && !node.nextSibling;
 				}
 
 				// If it's a text node and the offset is inside the text
@@ -1890,7 +1890,7 @@ define("tinymce/Formatter", [
 				// Remove style attribute if it's empty
 				if (stylesModified && dom.getAttrib(node, 'style') === '') {
 					node.removeAttribute('style');
-					node.removeAttribute('data-mce-style');
+					node.removeAttribute('data-mon-style');
 				}
 
 				// Remove attributes
@@ -1933,7 +1933,7 @@ define("tinymce/Formatter", [
 
 						// Remove mce prefixed attributes
 						if (MCE_ATTR_RE.test(name)) {
-							node.removeAttribute('data-mce-' + name);
+							node.removeAttribute('data-mon-' + name);
 						}
 
 						node.removeAttribute(name);
@@ -2144,7 +2144,7 @@ define("tinymce/Formatter", [
 
 			// Creates a caret container bogus element
 			function createCaretContainer(fill) {
-				var caretContainer = dom.create('span', {id: caretContainerId, 'data-mce-bogus': true, style: debug ? 'color:red' : ''});
+				var caretContainer = dom.create('span', {id: caretContainerId, 'data-mon-bogus': true, style: debug ? 'color:red' : ''});
 
 				if (fill) {
 					caretContainer.appendChild(ed.getDoc().createTextNode(INVISIBLE_CHAR));
@@ -2384,7 +2384,7 @@ define("tinymce/Formatter", [
 				if (caretContainer && !dom.isEmpty(caretContainer)) {
 					walk(caretContainer, function(node) {
 						if (node.nodeType == 1 && node.id !== caretContainerId && !dom.isEmpty(node)) {
-							dom.setAttrib(node, 'data-mce-bogus', null);
+							dom.setAttrib(node, 'data-mon-bogus', null);
 						}
 					}, 'childNodes');
 				}
@@ -2400,7 +2400,7 @@ define("tinymce/Formatter", [
 						// Mark children
 						i = nodes.length;
 						while (i--) {
-							dom.setAttrib(nodes[i], 'data-mce-bogus', '1');
+							dom.setAttrib(nodes[i], 'data-mon-bogus', '1');
 						}
 					}
 				};
@@ -2477,7 +2477,7 @@ define("tinymce/Formatter", [
 					if (node.nodeType == 3 && !isWhiteSpaceNode(node)) {
 						// IE has a "neat" feature where it moves the start node into the closest element
 						// we can avoid this by inserting an element before it and then remove it after we set the selection
-						tmpNode = dom.create('a', {'data-mce-bogus': 'all'}, INVISIBLE_CHAR);
+						tmpNode = dom.create('a', {'data-mon-bogus': 'all'}, INVISIBLE_CHAR);
 						node.parentNode.insertBefore(tmpNode, node);
 
 						// Set selection and remove tmpNode

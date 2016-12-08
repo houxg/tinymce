@@ -689,14 +689,14 @@ if (tinymce.Env.webkit) {
 	test('paste webkit retains text styles runtime styles internal', function() {
 		editor.settings.paste_webkit_styles = 'color';
 		editor.setContent('');
-		editor.execCommand('mceInsertClipboardContent', false, {content: '&lt;span style="color:red"&gt;&lt;span data-mce-style="color:red"&gt;'});
-		equal(editor.getContent(), '<p>&lt;span style="color:red"&gt;&lt;span data-mce-style="color:red"&gt;</p>');
+		editor.execCommand('mceInsertClipboardContent', false, {content: '&lt;span style="color:red"&gt;&lt;span data-mon-style="color:red"&gt;'});
+		equal(editor.getContent(), '<p>&lt;span style="color:red"&gt;&lt;span data-mon-style="color:red"&gt;</p>');
 	});
 
 	test('paste webkit remove runtime styles internal', function() {
 		editor.settings.paste_webkit_styles = 'color';
 		editor.setContent('');
-		editor.execCommand('mceInsertClipboardContent', false, {content: '<span style="color:red; font-size: 42px" data-mce-style="color: red;">Test</span>'});
+		editor.execCommand('mceInsertClipboardContent', false, {content: '<span style="color:red; font-size: 42px" data-mon-style="color: red;">Test</span>'});
 		equal(editor.getContent(), '<p><span style="color: red;">Test</span></p>');
 	});
 

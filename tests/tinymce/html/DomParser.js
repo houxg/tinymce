@@ -75,8 +75,8 @@
 		deepEqual(countNodes(root), {body:1, li:2, ul:2, '#text':2}, 'Whitespace around and inside blocks (ul/li) (count)');
 
 		parser = new tinymce.html.DomParser({}, new tinymce.html.Schema({invalid_elements : 'hr,br'}));
-		root = parser.parse('\n<hr />\n<br />\n<div>\n<hr />\n<br />\n<img src="file.gif" data-mce-src="file.gif" />\n<hr />\n<br />\n</div>\n<hr />\n<br />\n');
-		equal(serializer.serialize(root), '<div><img src="file.gif" data-mce-src="file.gif" /></div>', 'Whitespace where SaxParser will produce multiple whitespace nodes');
+		root = parser.parse('\n<hr />\n<br />\n<div>\n<hr />\n<br />\n<img src="file.gif" data-mon-src="file.gif" />\n<hr />\n<br />\n</div>\n<hr />\n<br />\n');
+		equal(serializer.serialize(root), '<div><img src="file.gif" data-mon-src="file.gif" /></div>', 'Whitespace where SaxParser will produce multiple whitespace nodes');
 		deepEqual(countNodes(root), {body:1, div:1, img:1}, 'Whitespace where SaxParser will produce multiple whitespace nodes (count)');
 	});
 
@@ -331,8 +331,8 @@
 		root = parser.parse(
 			'<p>a<br></p>' +
 			'<p>a<br>b<br></p>' +
-			'<p>a<br><br></p><p>a<br><span data-mce-type="bookmark"></span><br></p>' +
-			'<p>a<span data-mce-type="bookmark"></span><br></p>'
+			'<p>a<br><br></p><p>a<br><span data-mon-type="bookmark"></span><br></p>' +
+			'<p>a<span data-mon-type="bookmark"></span><br></p>'
 		);
 		equal(serializer.serialize(root), '<p>a</p><p>a<br />b</p><p>a<br /><br /></p><p>a<br /><br /></p><p>a</p>', 'Remove traling br elements.');
 	});
@@ -523,7 +523,7 @@
 
 		equal(
 			serializer.serialize(new tinymce.html.DomParser().parse(
-				'<div><b data-mce-bogus="1">a</b> <b data-mce-bogus="1">b</b><p>c</p></div>')
+				'<div><b data-mon-bogus="1">a</b> <b data-mon-bogus="1">b</b><p>c</p></div>')
 			),
 			'<div>a b<p>c</p></div>'
 		);
@@ -534,7 +534,7 @@
 
 		equal(
 			serializer.serialize(new tinymce.html.DomParser().parse(
-				'<div>1 <span data-mce-bogus="1">2</span><div>3</div></div>')
+				'<div>1 <span data-mon-bogus="1">2</span><div>3</div></div>')
 			),
 			'<div>1 2<div>3</div></div>'
 		);

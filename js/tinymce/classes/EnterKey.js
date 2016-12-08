@@ -196,7 +196,7 @@ define("tinymce/EnterKey", [
 
 			function emptyBlock(elm) {
 				// BR is needed in empty blocks on non IE browsers
-				elm.innerHTML = !isIE ? '<br data-mce-bogus="1">' : '';
+				elm.innerHTML = !isIE ? '<br data-mon-bogus="1">' : '';
 			}
 
 			// Creates a new block element by cloning the current one or creating a new one if the name is specified
@@ -238,7 +238,7 @@ define("tinymce/EnterKey", [
 
 				// BR is needed in empty blocks on non IE browsers
 				if (!isIE) {
-					caretNode.innerHTML = '<br data-mce-bogus="1">';
+					caretNode.innerHTML = '<br data-mon-bogus="1">';
 				}
 
 				return block;
@@ -283,7 +283,7 @@ define("tinymce/EnterKey", [
 				while ((node = walker.current())) {
 					if (node.nodeType === 1) {
 						// Ignore bogus elements
-						if (!node.getAttribute('data-mce-bogus')) {
+						if (!node.getAttribute('data-mon-bogus')) {
 							// Keep empty elements like <img /> <input /> but not trailing br:s like <p>text|<br></p>
 							name = node.nodeName.toLowerCase();
 							if (nonEmptyElementsMap[name] && name !== 'br') {

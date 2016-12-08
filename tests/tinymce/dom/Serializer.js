@@ -12,38 +12,38 @@ test('Schema rules', function() {
 	expect(8);
 
 	ser.setRules('@[id|title|class|style],div,img[src|alt|-style|border],span,hr');
-	DOM.setHTML('test', '<img title="test" src="tinymce/ui/img/raster.gif" data-mce-src="tinymce/ui/img/raster.gif" alt="test" border="0" style="border: 1px solid red" class="test" /><span id="test2">test</span><hr />');
+	DOM.setHTML('test', '<img title="test" src="tinymce/ui/img/raster.gif" data-mon-src="tinymce/ui/img/raster.gif" alt="test" border="0" style="border: 1px solid red" class="test" /><span id="test2">test</span><hr />');
 	equal(ser.serialize(DOM.get('test')), '<div id="test"><img title="test" class="test" src="tinymce/ui/img/raster.gif" alt="test" border="0" /><span id="test2">test</span><hr /></div>', 'Global rule');
 
 	ser.setRules('*a[*],em/i[*],strong/b[*i*]');
-	DOM.setHTML('test', '<a href="test" data-mce-href="test">test</a><strong title="test" class="test">test2</strong><em title="test">test3</em>');
+	DOM.setHTML('test', '<a href="test" data-mon-href="test">test</a><strong title="test" class="test">test2</strong><em title="test">test3</em>');
 	equal(ser.serialize(DOM.get('test')), '<a href="test">test</a><strong title="test">test2</strong><em title="test">test3</em>', 'Wildcard rules');
 
 	ser.setRules('br,hr,input[type|name|value],div[id],span[id],strong/b,a,em/i,a[!href|!name],img[src|border=0|title={$uid}]');
-	DOM.setHTML('test', '<br /><hr /><input type="text" name="test" value="val" class="no" /><span id="test2" class="no"><b class="no">abc</b><em class="no">123</em></span>123<a href="file.html"  data-mce-href="file.html">link</a><a name="anchor"></a><a>no</a><img src="tinymce/ui/img/raster.gif" data-mce-src="tinymce/ui/img/raster.gif" />');
+	DOM.setHTML('test', '<br /><hr /><input type="text" name="test" value="val" class="no" /><span id="test2" class="no"><b class="no">abc</b><em class="no">123</em></span>123<a href="file.html"  data-mon-href="file.html">link</a><a name="anchor"></a><a>no</a><img src="tinymce/ui/img/raster.gif" data-mon-src="tinymce/ui/img/raster.gif" />');
 	equal(ser.serialize(DOM.get('test')), '<div id="test"><br /><hr /><input type="text" name="test" value="val" /><span id="test2"><strong>abc</strong><em>123</em></span>123<a href="file.html">link</a><a name="anchor"></a>no<img src="tinymce/ui/img/raster.gif" border="0" title="mce_0" /></div>', 'Output name and attribute rules');
 
 	ser.setRules('a[href|target<_blank?_top|title:forced value]');
-	DOM.setHTML('test', '<a href="file.htm" data-mce-href="file.htm" target="_blank" title="title">link</a><a href="#" data-mce-href="#" target="test">test2</a>');
+	DOM.setHTML('test', '<a href="file.htm" data-mon-href="file.htm" target="_blank" title="title">link</a><a href="#" data-mon-href="#" target="test">test2</a>');
 	equal(ser.serialize(DOM.get('test')), '<a href="file.htm" target="_blank" title="forced value" rel="noopener noreferrer">link</a><a href="#" title="forced value">test2</a>');
 
 	ser.setRules('img[src|border=0|alt=]');
-	DOM.setHTML('test', '<img src="tinymce/ui/img/raster.gif" data-mce-src="tinymce/ui/img/raster.gif" border="0" alt="" />');
+	DOM.setHTML('test', '<img src="tinymce/ui/img/raster.gif" data-mon-src="tinymce/ui/img/raster.gif" border="0" alt="" />');
 	equal(ser.serialize(DOM.get('test')), '<img src="tinymce/ui/img/raster.gif" border="0" alt="" />', 'Default attribute with empty value');
 
 	ser.setRules('img[src|border=0|alt=],*[*]');
-	DOM.setHTML('test', '<img src="tinymce/ui/img/raster.gif" data-mce-src="tinymce/ui/img/raster.gif" /><hr />');
+	DOM.setHTML('test', '<img src="tinymce/ui/img/raster.gif" data-mon-src="tinymce/ui/img/raster.gif" /><hr />');
 	equal(ser.serialize(DOM.get('test')), '<div id="test"><img src="tinymce/ui/img/raster.gif" border="0" alt="" /><hr /></div>');
 
 	ser = new tinymce.dom.Serializer({
 		valid_elements : 'img[src|border=0|alt=]',
 		extended_valid_elements : 'div[id],img[src|alt=]'
 	});
-	DOM.setHTML('test', '<img src="tinymce/ui/img/raster.gif" data-mce-src="tinymce/ui/img/raster.gif" alt="" />');
+	DOM.setHTML('test', '<img src="tinymce/ui/img/raster.gif" data-mon-src="tinymce/ui/img/raster.gif" alt="" />');
 	equal(ser.serialize(DOM.get('test')), '<div id="test"><img src="tinymce/ui/img/raster.gif" alt="" /></div>');
 
 	ser = new tinymce.dom.Serializer({invalid_elements : 'hr,br'});
-	DOM.setHTML('test', '<img src="tinymce/ui/img/raster.gif" data-mce-src="tinymce/ui/img/raster.gif" /><hr /><br />');
+	DOM.setHTML('test', '<img src="tinymce/ui/img/raster.gif" data-mon-src="tinymce/ui/img/raster.gif" /><hr /><br />');
 	equal(ser.serialize(DOM.get('test')), '<div id="test"><img src="tinymce/ui/img/raster.gif" /></div>');
 });
 
@@ -193,7 +193,7 @@ test('Styles', function() {
 
 	ser.setRules('*[*]');
 
-	DOM.setHTML('test', '<span style="border: 1px solid red" data-mce-style="border: 1px solid red;">test</span>');
+	DOM.setHTML('test', '<span style="border: 1px solid red" data-mon-style="border: 1px solid red;">test</span>');
 	equal(ser.serialize(DOM.get('test')), '<div id="test"><span style="border: 1px solid red;">test</span></div>');
 });
 
@@ -262,7 +262,7 @@ test('Pre/post process events', function() {
 		o.content = o.content.replace(/<b>/g, '<b class="123">');
 	};
 
-	DOM.setHTML('test', '<span id="test2"><b>abc</b></span>123<a href="file.html" data-mce-href="file.html">link</a>');
+	DOM.setHTML('test', '<span id="test2"><b>abc</b></span>123<a href="file.html" data-mon-href="file.html">link</a>');
 	equal(ser.serialize(DOM.get('test'), {test : 'abc'}), '<div id="test"><span id="test2" class="abc"><b class="123">abc</b></span>123<a href="file.html">link</a></div>');
 });
 
@@ -350,7 +350,7 @@ test('Script with src attr', 1, function() {
 	var ser = new tinymce.dom.Serializer({fix_list_elements : true});
 	ser.setRules('script[type|language|src]');
 
-	DOM.setHTML('test', '<script src="test.js" data-mce-src="test.js"></s' + 'cript>');
+	DOM.setHTML('test', '<script src="test.js" data-mon-src="test.js"></s' + 'cript>');
 	equal(ser.serialize(DOM.get('test')), '<s' + 'cript src="test.js"></s' + 'cript>');
 });
 
@@ -455,7 +455,7 @@ test('Map elements', function() {
 
 	ser.setRules('map[id|name],area[shape|coords|href|target|alt]');
 
-	DOM.setHTML('test', '<map id="planetmap" name="planetmap"><area shape="rect" coords="0,0,82,126" href="sun.htm" data-mce-href="sun.htm" target="_blank" alt="sun" /></map>');
+	DOM.setHTML('test', '<map id="planetmap" name="planetmap"><area shape="rect" coords="0,0,82,126" href="sun.htm" data-mon-href="sun.htm" target="_blank" alt="sun" /></map>');
 	equal(ser.serialize(DOM.get('test')).toLowerCase(), '<map id="planetmap" name="planetmap"><area shape="rect" coords="0,0,82,126" href="sun.htm" target="_blank" alt="sun" /></map>');
 });
 
@@ -498,7 +498,7 @@ test('Restore tabindex', function() {
 		valid_elements: 'span[tabindex]'
 	});
 
-	DOM.setHTML('test', '<span data-mce-tabindex="42"></span>');
+	DOM.setHTML('test', '<span data-mon-tabindex="42"></span>');
 	equal(ser.serialize(DOM.get('test')), '<span tabindex="42"></span>');
 });
 

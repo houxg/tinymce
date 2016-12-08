@@ -283,7 +283,7 @@ ModuleLoader.require([
 			equal(uploadCount, 0, 'Should not upload.');
 		}
 
-		editor.getBody().innerHTML = '<img src="' + testBlobDataUri + '" data-mce-bogus="1">';
+		editor.getBody().innerHTML = '<img src="' + testBlobDataUri + '" data-mon-bogus="1">';
 
 		editor.settings.images_upload_handler = function(data, success) {
 			uploadCount++;

@@ -316,7 +316,7 @@ define("tinymce/html/DomParser", [
 					next = node.next;
 
 					if (node.type == 3 || (node.type == 1 && node.name !== 'p' &&
-						!blockElements[node.name] && !node.attr('data-mce-type'))) {
+						!blockElements[node.name] && !node.attr('data-mon-type'))) {
 						if (!rootBlockNode) {
 							// Create a new root block element
 							rootBlockNode = createNode(rootBlockName, 1);
@@ -698,7 +698,7 @@ define("tinymce/html/DomParser", [
 							prevName = prev.name;
 
 							// Ignore bookmarks
-							if (prevName !== "span" || prev.attr('data-mce-type') !== 'bookmark') {
+							if (prevName !== "span" || prev.attr('data-mon-type') !== 'bookmark') {
 								// Found a non BR element
 								if (prevName !== "br") {
 									break;

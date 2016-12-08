@@ -72,7 +72,7 @@ define("tinymce/dom/ControlSelection", [
 			rootClass + ' .mce-resizehandle:hover {' +
 				'background: #000' +
 			'}' +
-			rootClass + ' img[data-mce-selected],' + rootClass + ' hr[data-mce-selected] {' +
+			rootClass + ' img[data-mon-selected],' + rootClass + ' hr[data-mon-selected] {' +
 				'outline: 1px solid black;' +
 				'resize: none' + // Have been talks about implementing this in browsers
 			'}' +
@@ -112,7 +112,7 @@ define("tinymce/dom/ControlSelection", [
 				selector = 'table,img,div';
 			}
 
-			if (elm.getAttribute('data-mce-resize') === 'false') {
+			if (elm.getAttribute('data-mon-resize') === 'false') {
 				return false;
 			}
 
@@ -289,7 +289,7 @@ define("tinymce/dom/ControlSelection", [
 
 						selectedElmGhost = selectedElm.cloneNode(true);
 						dom.addClass(selectedElmGhost, 'mce-clonedresizable');
-						dom.setAttrib(selectedElmGhost, 'data-mce-bogus', 'all');
+						dom.setAttrib(selectedElmGhost, 'data-mon-bogus', 'all');
 						selectedElmGhost.contentEditable = false; // Hides IE move layer cursor
 						selectedElmGhost.unSelectabe = true;
 						dom.setStyles(selectedElmGhost, {
@@ -298,7 +298,7 @@ define("tinymce/dom/ControlSelection", [
 							margin: 0
 						});
 
-						selectedElmGhost.removeAttribute('data-mce-selected');
+						selectedElmGhost.removeAttribute('data-mon-selected');
 						rootElement.appendChild(selectedElmGhost);
 
 						dom.bind(editableDoc, 'mousemove', resizeGhostElement);
@@ -311,7 +311,7 @@ define("tinymce/dom/ControlSelection", [
 
 						resizeHelper = dom.add(rootElement, 'div', {
 							'class': 'mce-resize-helper',
-							'data-mce-bogus': 'all'
+							'data-mon-bogus': 'all'
 						}, startW + ' &times; ' + startH);
 					}
 
@@ -332,7 +332,7 @@ define("tinymce/dom/ControlSelection", [
 
 					handleElm = dom.add(rootElement, 'div', {
 						id: 'mceResizeHandle' + name,
-						'data-mce-bogus': 'all',
+						'data-mon-bogus': 'all',
 						'class': 'mce-resizehandle',
 						unselectable: true,
 						style: 'cursor:' + name + '-resize; margin:0; padding:0'
@@ -362,7 +362,7 @@ define("tinymce/dom/ControlSelection", [
 				hideResizeRect();
 			}
 
-			selectedElm.setAttribute('data-mce-selected', '1');
+			selectedElm.setAttribute('data-mon-selected', '1');
 		}
 
 		function hideResizeRect() {
@@ -371,7 +371,7 @@ define("tinymce/dom/ControlSelection", [
 			unbindResizeHandleEvents();
 
 			if (selectedElm) {
-				selectedElm.removeAttribute('data-mce-selected');
+				selectedElm.removeAttribute('data-mon-selected');
 			}
 
 			for (name in resizeHandles) {
@@ -401,9 +401,9 @@ define("tinymce/dom/ControlSelection", [
 				return;
 			}
 
-			// Remove data-mce-selected from all elements since they might have been copied using Ctrl+c/v
-			each(dom.select('img[data-mce-selected],hr[data-mce-selected]'), function(img) {
-				img.removeAttribute('data-mce-selected');
+			// Remove data-mon-selected from all elements since they might have been copied using Ctrl+c/v
+			each(dom.select('img[data-mon-selected],hr[data-mon-selected]'), function(img) {
+				img.removeAttribute('data-mon-selected');
 			});
 
 			controlElm = e.type == 'mousedown' ? e.target : selection.getNode();

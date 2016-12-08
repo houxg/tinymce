@@ -236,7 +236,7 @@ define("tinymce/tableplugin/Quirks", [
 						if (last.nodeValue.length > 0) {
 							break;
 						}
-					} else if (last.nodeType == 1 && (last.tagName == 'BR' || !last.getAttribute('data-mce-bogus'))) {
+					} else if (last.nodeType == 1 && (last.tagName == 'BR' || !last.getAttribute('data-mon-bogus'))) {
 						break;
 					}
 				}
@@ -247,10 +247,10 @@ define("tinymce/tableplugin/Quirks", [
 							editor.getBody(),
 							editor.settings.forced_root_block,
 							editor.settings.forced_root_block_attrs,
-							Env.ie && Env.ie < 10 ? '&nbsp;' : '<br data-mce-bogus="1" />'
+							Env.ie && Env.ie < 10 ? '&nbsp;' : '<br data-mon-bogus="1" />'
 						);
 					} else {
-						editor.dom.add(editor.getBody(), 'br', {'data-mce-bogus': '1'});
+						editor.dom.add(editor.getBody(), 'br', {'data-mon-bogus': '1'});
 					}
 				}
 			});
@@ -350,7 +350,7 @@ define("tinymce/tableplugin/Quirks", [
 					if (table) {
 						tableCells = editor.dom.select('td,th', table);
 						selectedTableCells = Tools.grep(tableCells, function(cell) {
-							return !!editor.dom.getAttrib(cell, 'data-mce-selected');
+							return !!editor.dom.getAttrib(cell, 'data-mon-selected');
 						});
 
 						if (selectedTableCells.length === 0) {

@@ -31,7 +31,7 @@ tinymce.PluginManager.add('link', function(editor) {
 
 	function getHref(elm) {
 		// Returns the real href value not the resolved a.href value
-		var href = elm.getAttribute('data-mce-href');
+		var href = elm.getAttribute('data-mon-href');
 		return href ? href : elm.getAttribute('href');
 	}
 

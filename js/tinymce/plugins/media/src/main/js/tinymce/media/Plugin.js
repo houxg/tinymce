@@ -23,7 +23,7 @@ define('tinymce.media.Plugin', [
 		editor.on('ResolveName', function (e) {
 			var name;
 
-			if (e.target.nodeType === 1 && (name = e.target.getAttribute("data-mce-object"))) {
+			if (e.target.nodeType === 1 && (name = e.target.getAttribute("data-mon-object"))) {
 				e.name = name;
 			}
 		});
@@ -49,7 +49,7 @@ define('tinymce.media.Plugin', [
 				Nodes.placeHolderConverter(editor));
 
 			// Replaces placeholder images with real elements for video, object, iframe etc
-			editor.serializer.addAttributeFilter('data-mce-object', function (nodes, name) {
+			editor.serializer.addAttributeFilter('data-mon-object', function (nodes, name) {
 				var i = nodes.length;
 				var node;
 				var realElm;
@@ -95,7 +95,7 @@ define('tinymce.media.Plugin', [
 					while (ai--) {
 						var attrName = attribs[ai].name;
 
-						if (attrName.indexOf('data-mce-p-') === 0) {
+						if (attrName.indexOf('data-mon-p-') === 0) {
 							realElm.attr(attrName.substr(11), attribs[ai].value);
 						}
 					}
@@ -105,7 +105,7 @@ define('tinymce.media.Plugin', [
 					}
 
 					// Inject innerhtml
-					innerHtml = node.attr('data-mce-html');
+					innerHtml = node.attr('data-mon-html');
 					if (innerHtml) {
 						innerNode = new tinymce.html.Node('#text', 3);
 						innerNode.raw = true;
@@ -122,14 +122,14 @@ define('tinymce.media.Plugin', [
 			var selectedNode = editor.selection.getNode();
 
 			if (selectedNode && editor.dom.hasClass(selectedNode, 'mce-preview-object')) {
-				if (editor.dom.getAttrib(selectedNode, 'data-mce-selected')) {
-					selectedNode.setAttribute('data-mce-selected', '2');
+				if (editor.dom.getAttrib(selectedNode, 'data-mon-selected')) {
+					selectedNode.setAttribute('data-mon-selected', '2');
 				}
 			}
 		});
 
 		editor.on('ObjectSelected', function (e) {
-			var objectType = e.target.getAttribute('data-mce-object');
+			var objectType = e.target.getAttribute('data-mon-object');
 
 			if (objectType === "audio" || objectType === "script") {
 				e.preventDefault();
@@ -140,11 +140,11 @@ define('tinymce.media.Plugin', [
 			var target = e.target;
 			var html;
 
-			if (target.getAttribute('data-mce-object')) {
-				html = target.getAttribute('data-mce-html');
+			if (target.getAttribute('data-mon-object')) {
+				html = target.getAttribute('data-mon-html');
 				if (html) {
 					html = unescape(html);
-					target.setAttribute('data-mce-html', escape(
+					target.setAttribute('data-mon-html', escape(
 						UpdateHtml.updateHtml(html, {
 							width: e.width,
 							height: e.height
@@ -161,7 +161,7 @@ define('tinymce.media.Plugin', [
 		editor.addButton('media', {
 			tooltip: 'Insert/edit video',
 			onclick: this.showDialog,
-			stateSelector: ['img[data-mce-object]', 'span[data-mce-object]', 'div[data-ephox-embed-iri]']
+			stateSelector: ['img[data-mon-object]', 'span[data-mon-object]', 'div[data-ephox-embed-iri]']
 		});
 
 		editor.addMenuItem('media', {

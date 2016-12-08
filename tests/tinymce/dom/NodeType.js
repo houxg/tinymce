@@ -72,8 +72,8 @@ ModuleLoader.require([
 	});
 
 	test('isBogus', function() {
-		strictEqual(NodeType.isBogus($('<div data-mce-bogus="1"></div>')[0]), true);
-		strictEqual(NodeType.isBogus($('<div data-mce-bogus="all"></div>')[0]), true);
+		strictEqual(NodeType.isBogus($('<div data-mon-bogus="1"></div>')[0]), true);
+		strictEqual(NodeType.isBogus($('<div data-mon-bogus="all"></div>')[0]), true);
 		strictEqual(NodeType.isBogus($('<div></div>')[0]), false);
 		strictEqual(NodeType.isBogus(document.createTextNode('test')), false);
 		strictEqual(NodeType.isBogus(null), false);

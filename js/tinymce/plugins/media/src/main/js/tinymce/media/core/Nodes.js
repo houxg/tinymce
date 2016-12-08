@@ -18,7 +18,7 @@ define('tinymce.media.core.Nodes', [
 			height: node.attr('height') || (name === "audio" ? "30" : "150"),
 			style: node.attr('style'),
 			src: Env.transparentSrc,
-			"data-mce-object": name,
+			"data-mon-object": name,
 			"class": "mce-object mce-object-" + name
 		});
 
@@ -35,7 +35,7 @@ define('tinymce.media.core.Nodes', [
 		previewWrapper.attr({
 			contentEditable: 'false',
 			style: node.attr('style'),
-			"data-mce-object": name,
+			"data-mon-object": name,
 			"class": "mce-preview-object mce-object-" + name
 		});
 
@@ -79,7 +79,7 @@ define('tinymce.media.core.Nodes', [
 					attrValue = editor.convertURL(attrValue, attrName);
 				}
 
-				targetNode.attr('data-mce-p-' + attrName, attrValue);
+				targetNode.attr('data-mon-p-' + attrName, attrValue);
 			}
 		}
 
@@ -87,7 +87,7 @@ define('tinymce.media.core.Nodes', [
 		// This enables us to copy/paste the fake object
 		innerHtml = sourceNode.firstChild && sourceNode.firstChild.value;
 		if (innerHtml) {
-			targetNode.attr("data-mce-html", escape(Sanitize.sanitize(editor, innerHtml)));
+			targetNode.attr("data-mon-html", escape(Sanitize.sanitize(editor, innerHtml)));
 			targetNode.firstChild = null;
 		}
 	};
@@ -105,7 +105,7 @@ define('tinymce.media.core.Nodes', [
 					continue;
 				}
 
-				if (node.parent.attr('data-mce-object')) {
+				if (node.parent.attr('data-mon-object')) {
 					continue;
 				}
 

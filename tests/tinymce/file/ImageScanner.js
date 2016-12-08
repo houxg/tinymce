@@ -18,8 +18,8 @@ ModuleLoader.require([
 		document.getElementById('view').innerHTML = (
 			'<img src="' + base64Src + '">' +
 			'<img src="' + Env.transparentSrc + '">' +
-			'<img src="' + base64Src + '" data-mce-bogus="1">' +
-			'<img src="' + base64Src + '" data-mce-placeholder="1">'
+			'<img src="' + base64Src + '" data-mon-bogus="1">' +
+			'<img src="' + base64Src + '" data-mon-placeholder="1">'
 		);
 
 		imageScanner.findAll(document.getElementById('view')).then(function(result) {

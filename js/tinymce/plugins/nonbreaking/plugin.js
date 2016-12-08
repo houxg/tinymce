@@ -19,7 +19,7 @@ tinymce.PluginManager.add('nonbreaking', function(editor) {
 			'<span class="mce-nbsp">&nbsp;</span>' : '&nbsp;'
 		);
 
-		editor.dom.setAttrib(editor.dom.select('span.mce-nbsp'), 'data-mce-bogus', '1');
+		editor.dom.setAttrib(editor.dom.select('span.mce-nbsp'), 'data-mon-bogus', '1');
 	});
 
 	editor.addButton('nonbreaking', {

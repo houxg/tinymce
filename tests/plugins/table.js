@@ -47,7 +47,7 @@
 	function testCommand(command, tests) {
 		tinymce.util.Tools.each(tests, function (test) {
 			editor.getBody().innerHTML = test.before;
-			editor.selection.select(editor.dom.select('td[data-mce-selected]')[0], true);
+			editor.selection.select(editor.dom.select('td[data-mon-selected]')[0], true);
 			editor.selection.collapse(true);
 			editor.execCommand(command);
 			equal(cleanTableHtml(editor.getContent()), test.after, test.message);
@@ -431,8 +431,8 @@
 			'<table>' +
 				'<tbody>' +
 					'<tr>' +
-						'<td style="width: 10px;" data-mce-selected="1">a</td>' +
-						'<td style="width: 20px;" data-mce-selected="1">b</td>' +
+						'<td style="width: 10px;" data-mon-selected="1">a</td>' +
+						'<td style="width: 20px;" data-mon-selected="1">b</td>' +
 					'</tr>' +
 				'</tbody>' +
 			'</table>'
@@ -524,12 +524,12 @@
 			'<table>' +
 				'<tbody>' +
 					'<tr style="height: 20px;">' +
-						'<td data-mce-selected="1">a</td>' +
-						'<td data-mce-selected="1">b</td>' +
+						'<td data-mon-selected="1">a</td>' +
+						'<td data-mon-selected="1">b</td>' +
 					'</tr>' +
 					'<tr style="height: 20px;">' +
-						'<td data-mce-selected="1">c</td>' +
-						'<td data-mce-selected="1">d</td>' +
+						'<td data-mon-selected="1">c</td>' +
+						'<td data-mon-selected="1">d</td>' +
 					'</tr>' +
 				'</tbody>' +
 			'</table>'
@@ -920,7 +920,7 @@
 				before: (
 					'<table>' +
 						'<tbody>' +
-							'<tr><td data-mce-selected="1">1a</td><td>2a</td><td>3a</td></tr>' +
+							'<tr><td data-mon-selected="1">1a</td><td>2a</td><td>3a</td></tr>' +
 						'</tbody>' +
 					'</table>'
 				),
@@ -939,7 +939,7 @@
 					'<table>' +
 						'<tbody>' +
 							'<tr><td>1a</td><td>2a</td><td>3a</td></tr>' +
-							'<tr><td data-mce-selected="1">1b</td><td>2b</td><td>3b</td></tr>' +
+							'<tr><td data-mon-selected="1">1b</td><td>2b</td><td>3b</td></tr>' +
 						'</tbody>' +
 					'</table>'
 				),
@@ -959,7 +959,7 @@
 					'<table>' +
 						'<tbody>' +
 							'<tr><td rowspan="2">1a</td><td>2a</td><td rowspan="2">3a</td></tr>' +
-							'<tr><td data-mce-selected="1">2b</td></tr>' +
+							'<tr><td data-mon-selected="1">2b</td></tr>' +
 						'</tbody>' +
 					'</table>'
 				),
@@ -980,7 +980,7 @@
 						'<tbody>' +
 							'<tr><td rowspan="3">1a</td><td>2a</td><td rowspan="3">3a</td></tr>' +
 							'<tr><td>2b</td></tr>' +
-							'<tr><td data-mce-selected="1">2c</td></tr>' +
+							'<tr><td data-mon-selected="1">2c</td></tr>' +
 						'</tbody>' +
 					'</table>'
 				),
@@ -1010,7 +1010,7 @@
 				before: (
 					'<table>' +
 						'<tbody>' +
-							'<tr><td data-mce-selected="1">1a</td><td>2a</td><td>3a</td></tr>' +
+							'<tr><td data-mon-selected="1">1a</td><td>2a</td><td>3a</td></tr>' +
 						'</tbody>' +
 					'</table>'
 				),
@@ -1028,7 +1028,7 @@
 				before: (
 					'<table>' +
 						'<tbody>' +
-							'<tr><td data-mce-selected="1">1a</td><td>2a</td><td>3a</td></tr>' +
+							'<tr><td data-mon-selected="1">1a</td><td>2a</td><td>3a</td></tr>' +
 							'<tr><td>1b</td><td>2b</td><td>3b</td></tr>' +
 						'</tbody>' +
 					'</table>'
@@ -1048,7 +1048,7 @@
 				before: (
 					'<table>' +
 						'<tbody>' +
-							'<tr><td rowspan="2" data-mce-selected="1">1a</td><td>2a</td><td rowspan="2">3a</td></tr>' +
+							'<tr><td rowspan="2" data-mon-selected="1">1a</td><td>2a</td><td rowspan="2">3a</td></tr>' +
 							'<tr><td>2b</td></tr>' +
 						'</tbody>' +
 					'</table>'
@@ -1068,7 +1068,7 @@
 				before: (
 					'<table>' +
 						'<tbody>' +
-							'<tr><td rowspan="3" data-mce-selected="1">1a</td><td>2a</td><td rowspan="3">3a</td></tr>' +
+							'<tr><td rowspan="3" data-mon-selected="1">1a</td><td>2a</td><td rowspan="3">3a</td></tr>' +
 							'<tr><td>2b</td></tr>' +
 							'<tr><td>2c</td></tr>' +
 						'</tbody>' +
@@ -1101,8 +1101,8 @@
 				before: (
 					'<table>' +
 						'<tbody>' +
-							'<tr><td data-mce-selected="1">a1</td><td data-mce-selected="1">b1</td></tr>' +
-							'<tr><td data-mce-selected="1">a2</td><td data-mce-selected="1">b2</td></tr>' +
+							'<tr><td data-mon-selected="1">a1</td><td data-mon-selected="1">b1</td></tr>' +
+							'<tr><td data-mon-selected="1">a2</td><td data-mon-selected="1">b2</td></tr>' +
 						'</tbody>' +
 					'</table>'
 				),
@@ -1121,8 +1121,8 @@
 				before: (
 					'<table>' +
 						'<tbody>' +
-							'<tr><td data-mce-selected="1">a1</td><td data-mce-selected="1">b1</td></tr>' +
-							'<tr><td data-mce-selected="1">a2</td><td data-mce-selected="1">b2</td></tr>' +
+							'<tr><td data-mon-selected="1">a1</td><td data-mon-selected="1">b1</td></tr>' +
+							'<tr><td data-mon-selected="1">a2</td><td data-mon-selected="1">b2</td></tr>' +
 							'<tr><td>a3</td><td>b3</td></tr>' +
 						'</tbody>' +
 					'</table>'
@@ -1143,8 +1143,8 @@
 				before: (
 					'<table>' +
 						'<tbody>' +
-							'<tr><td rowspan="2">a1</td><td data-mce-selected="1">b1</td></tr>' +
-							'<tr><td data-mce-selected="1">b2</td></tr>' +
+							'<tr><td rowspan="2">a1</td><td data-mon-selected="1">b1</td></tr>' +
+							'<tr><td data-mon-selected="1">b2</td></tr>' +
 						'</tbody>' +
 					'</table>'
 				),
@@ -1163,7 +1163,7 @@
 					'<table>' +
 						'<tbody>' +
 							'<tr><td colspan="2">a1</td></tr>' +
-							'<tr><td data-mce-selected="1">a2</td><td data-mce-selected="1">b2</td></tr>' +
+							'<tr><td data-mon-selected="1">a2</td><td data-mon-selected="1">b2</td></tr>' +
 						'</tbody>' +
 					'</table>'
 				),
@@ -1182,9 +1182,9 @@
 				before: (
 					'<table>' +
 						'<tbody>' +
-							'<tr><td rowspan="3">a1</td><td rowspan="3">b1</td><td data-mce-selected="1">c1</td></tr>' +
-							'<tr><td data-mce-selected="1">c2</td></tr>' +
-							'<tr><td data-mce-selected="1">c3</td></tr>' +
+							'<tr><td rowspan="3">a1</td><td rowspan="3">b1</td><td data-mon-selected="1">c1</td></tr>' +
+							'<tr><td data-mon-selected="1">c2</td></tr>' +
+							'<tr><td data-mon-selected="1">c3</td></tr>' +
 						'</tbody>' +
 					'</table>'
 				),
@@ -1202,7 +1202,7 @@
 				before: (
 					'<table>' +
 						'<tbody>' +
-							'<tr><td data-mce-selected="1">a1</td><td data-mce-selected="1">b1</td><td data-mce-selected="1">c1</td></tr>' +
+							'<tr><td data-mon-selected="1">a1</td><td data-mon-selected="1">b1</td><td data-mon-selected="1">c1</td></tr>' +
 							'<tr><td colspan="3">a2</td></tr>' +
 							'<tr><td colspan="3">a3</td></tr>' +
 						'</tbody>' +
@@ -1224,9 +1224,9 @@
 				before: (
 					'<table>' +
 						'<tbody>' +
-							'<tr><td colspan="2" rowspan="2">a1</td><td rowspan="3">b1</td><td data-mce-selected="1">c1</td></tr>' +
-							'<tr><td data-mce-selected="1">c2</td></tr>' +
-							'<tr><td>a3</td><td>b3</td><td data-mce-selected="1">c3</td></tr>' +
+							'<tr><td colspan="2" rowspan="2">a1</td><td rowspan="3">b1</td><td data-mon-selected="1">c1</td></tr>' +
+							'<tr><td data-mon-selected="1">c2</td></tr>' +
+							'<tr><td>a3</td><td>b3</td><td data-mon-selected="1">c3</td></tr>' +
 						'</tbody>' +
 					'</table>'
 				),
@@ -1245,7 +1245,7 @@
 				before: (
 					'<table>' +
 						'<tbody>' +
-							'<tr><td data-mce-selected="1">a1</td><td data-mce-selected="1">b1</td><td data-mce-selected="1">c1</td></tr>' +
+							'<tr><td data-mon-selected="1">a1</td><td data-mon-selected="1">b1</td><td data-mon-selected="1">c1</td></tr>' +
 							'<tr><td colspan="3">a2</td></tr>' +
 							'<tr><td colspan="2" rowspan="2">a3</td><td>c3</td></tr>' +
 							'<tr><td>c4</td></tr>' +
@@ -1280,8 +1280,8 @@
 								'<td>c2</td>' +
 							'</tr>' +
 							'<tr>' +
-								'<td data-mce-selected="1">b3</td>' +
-								'<td data-mce-selected="1">c3</td>' +
+								'<td data-mon-selected="1">b3</td>' +
+								'<td data-mon-selected="1">c3</td>' +
 							'</tr>' +
 						'</tbody>' +
 					'</table>'
@@ -1314,8 +1314,8 @@
 						'<tbody>' +
 							'<tr>' +
 								'<td>a1</td>' +
-								'<td data-mce-selected="1">b1</td>' +
-								'<td data-mce-selected="1">c1</td>' +
+								'<td data-mon-selected="1">b1</td>' +
+								'<td data-mon-selected="1">c1</td>' +
 							'</tr>' +
 							'<tr>' +
 								'<td colspan="3">a2</td>' +
@@ -1348,10 +1348,10 @@
 								'<td rowspan="3">b1</td>' +
 							'</tr>' +
 							'<tr>' +
-								'<td data-mce-selected="1">a2</td>' +
+								'<td data-mon-selected="1">a2</td>' +
 							'</tr>' +
 							'<tr>' +
-								'<td data-mce-selected="1">a3</td>' +
+								'<td data-mon-selected="1">a3</td>' +
 							'</tr>' +
 						'</tbody>' +
 					'</table>'
@@ -1410,8 +1410,8 @@
 	test("Delete selected cells", function() {
 		editor.getBody().innerHTML = (
 			'<table><tbody>' +
-			'<tr><td data-mce-selected="1">A1</td><td>A2</td></tr>' +
-			'<tr><td data-mce-selected="1">B1</td><td>B2</td></tr>' +
+			'<tr><td data-mon-selected="1">A1</td><td>A2</td></tr>' +
+			'<tr><td data-mon-selected="1">B1</td><td>B2</td></tr>' +
 			'</tbody></table>' +
 			'<p>x</p>'
 		);
@@ -1428,8 +1428,8 @@
 	test("Delete all cells", function() {
 		editor.getBody().innerHTML = (
 			'<table><tbody>' +
-			'<tr><td data-mce-selected="1">A1</td><td data-mce-selected="1">A2</td></tr>' +
-			'<tr><td data-mce-selected="1">B1</td><td data-mce-selected="1">B2</td></tr>' +
+			'<tr><td data-mon-selected="1">A1</td><td data-mon-selected="1">A2</td></tr>' +
+			'<tr><td data-mon-selected="1">B1</td><td data-mon-selected="1">B2</td></tr>' +
 			'</tbody></table>' +
 			'<p>x</p>'
 		);
@@ -1461,17 +1461,17 @@
 	});
 
 	var testResizeTable1 = '<table style="width: 426px"><tbody>' +
-			'<tr><td style="height: 20px; width: 200px;" colspan="2" data-mce-style="height: 20px; width: 200px;">A1</td><td style="height: 20px; width: 100px;" data-mce-style="height: 20px; width: 100px;">A2</td><td style="height: 20px; width: 100px;" data-mce-style="height: 20px; width: 100px;">A3</td></tr>' +
-			'<tr><td style="height: 20px; width: 100px;" data-mce-style="height: 20px; width: 100px;">B1</td><td style="height: 20px; width: 200px;" colspan="2" data-mce-style="height: 20px; width: 200px;">B2</td><td style="height: 20px; width: 100px;" data-mce-style="height: 20px; width: 100px;">B3</td></tr>' +
-			'<tr><td style="height: 20px; width: 100px;" data-mce-style="height: 20px; width: 100px;">C1</td><td style="height: 20px; width: 100px;" data-mce-style="height: 20px; width: 100px;">C2</td><td style="height: 20px; width: 200px;" colspan="2" data-mce-style="height: 20px; width: 200px;">C3</td></tr>' +
-			'<tr><td style="height: 20px; width: 400px;" colspan="4" data-mce-style="height: 20px; width: 400px;">D1</td></tr></tbody></table>';
+			'<tr><td style="height: 20px; width: 200px;" colspan="2" data-mon-style="height: 20px; width: 200px;">A1</td><td style="height: 20px; width: 100px;" data-mon-style="height: 20px; width: 100px;">A2</td><td style="height: 20px; width: 100px;" data-mon-style="height: 20px; width: 100px;">A3</td></tr>' +
+			'<tr><td style="height: 20px; width: 100px;" data-mon-style="height: 20px; width: 100px;">B1</td><td style="height: 20px; width: 200px;" colspan="2" data-mon-style="height: 20px; width: 200px;">B2</td><td style="height: 20px; width: 100px;" data-mon-style="height: 20px; width: 100px;">B3</td></tr>' +
+			'<tr><td style="height: 20px; width: 100px;" data-mon-style="height: 20px; width: 100px;">C1</td><td style="height: 20px; width: 100px;" data-mon-style="height: 20px; width: 100px;">C2</td><td style="height: 20px; width: 200px;" colspan="2" data-mon-style="height: 20px; width: 200px;">C3</td></tr>' +
+			'<tr><td style="height: 20px; width: 400px;" colspan="4" data-mon-style="height: 20px; width: 400px;">D1</td></tr></tbody></table>';
 
 	var testResizeTable2 = '<table border="1"><tbody>' +
-	'<tr><th style="height: 20px; width: 20px;" data-mce-style="height: 20px; width: 20px;">A0</th><th style="height: 20px; width: 20px;" data-mce-style="height: 20px; width: 20px;">A1</th><th style="height: 20px; width: 20px;" data-mce-style="height: 20px; width: 20px;">A2</th>' +
-	'<th style="height: 20px; width: 40px;" data-mce-style="height: 20px; width: 40px;">A3</th><th style="height: 20px; width: 10px;" data-mce-style="height: 20px; width: 10px;">A4</th></tr><tr><td style="height: 20px; width: 20px;" data-mce-style="height: 20px; width: 20px;">B0</td><td style="height: 20px; width: 20px; "' +
-	'data-mce-style="height: 20px; width: 20px;">B1</td><td style="height: 20px; width: 20px;" data-mce-style="height: 20px; width: 20px;">B2</td><td style="height: 20px; width: 40px;" data-mce-style="height: 20px; width: 40px;">B3</td><td style="height: 40px; width: 10px;" rowspan="2" data-mce-style="height: 20px; width: 10px;">' +
-	'B3</td></tr><tr><td style="height: 20px; width: 20px;" data-mce-style="height: 20px; width: 20px;">C0</td><td style="height: 20px; width: 20px;" data-mce-style="height: 20px; width: 20px;">C1</td><td style="height: 20px; width: 20px;" data-mce-style="height: 20px; width: 20px;">C2</td><td style="height: 20px; width: 40px;" ' +
-	'data-mce-style="height: 20px; width: 40px;">C3</td></tr></tbody></table>';
+	'<tr><th style="height: 20px; width: 20px;" data-mon-style="height: 20px; width: 20px;">A0</th><th style="height: 20px; width: 20px;" data-mon-style="height: 20px; width: 20px;">A1</th><th style="height: 20px; width: 20px;" data-mon-style="height: 20px; width: 20px;">A2</th>' +
+	'<th style="height: 20px; width: 40px;" data-mon-style="height: 20px; width: 40px;">A3</th><th style="height: 20px; width: 10px;" data-mon-style="height: 20px; width: 10px;">A4</th></tr><tr><td style="height: 20px; width: 20px;" data-mon-style="height: 20px; width: 20px;">B0</td><td style="height: 20px; width: 20px; "' +
+	'data-mon-style="height: 20px; width: 20px;">B1</td><td style="height: 20px; width: 20px;" data-mon-style="height: 20px; width: 20px;">B2</td><td style="height: 20px; width: 40px;" data-mon-style="height: 20px; width: 40px;">B3</td><td style="height: 40px; width: 10px;" rowspan="2" data-mon-style="height: 20px; width: 10px;">' +
+	'B3</td></tr><tr><td style="height: 20px; width: 20px;" data-mon-style="height: 20px; width: 20px;">C0</td><td style="height: 20px; width: 20px;" data-mon-style="height: 20px; width: 20px;">C1</td><td style="height: 20px; width: 20px;" data-mon-style="height: 20px; width: 20px;">C2</td><td style="height: 20px; width: 40px;" ' +
+	'data-mon-style="height: 20px; width: 40px;">C3</td></tr></tbody></table>';
 
 	var testResizeTable3 = '<div style=\"display: block; width: 400px;\"><table style=\"border-collapse: collapse; border: 1px solid black;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"><tbody><tr><td rowspan=\"2\" width=\"25%\">&nbsp;a</td><td width=\"25%\">&nbsp;b</td><td width=\"25%\">&nbsp;</td>' +
 	'<td width=\"25%\">&nbsp;c</td></tr><tr><td width=\"25%\">&nbsp;d</td><td width=\"25%\">&nbsp;</td><td rowspan=\"2\" width=\"25%\">&nbsp;e</td></tr><tr><td width=\"25%\">&nbsp;f</td><td width=\"25%\">&nbsp;g</td><td width=\"25%\">&nbsp;</td></tr><tr><td width=\"25%\">&nbsp;h</td><td width=\"25%\">&nbsp;i</td><td width=\"25%\">&nbsp;</td><td width=\"25%\">j&nbsp;</td></tr></tbody></table></div>';
@@ -1889,7 +1889,7 @@
 		}
 
 		function getSelectedCells(table) {
-			return editor.$(table).find('td[data-mce-selected]').toArray();
+			return editor.$(table).find('td[data-mon-selected]').toArray();
 		}
 
 		editor.setContent(tableHtml);

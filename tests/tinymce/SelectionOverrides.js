@@ -162,7 +162,7 @@ ModuleLoader.require([
 		Utils.setSelection('div div', 1);
 
 		Utils.type('\b');
-		equal(Utils.cleanHtml(editor.getBody().innerHTML), '<div contenteditable="false">1<div contenteditable="true"><br data-mce-bogus="1"></div>3</div>');
+		equal(Utils.cleanHtml(editor.getBody().innerHTML), '<div contenteditable="false">1<div contenteditable="true"><br data-mon-bogus="1"></div>3</div>');
 		equal(editor.selection.getRng().startContainer, editor.$('div div')[0]);
 	});
 

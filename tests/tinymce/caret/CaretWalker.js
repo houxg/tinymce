@@ -270,7 +270,7 @@ ModuleLoader.require([
 	});
 
 	test('never into caret containers', function() {
-		setupHtml('abc<b data-mce-caret="1">def</b>ghi');
+		setupHtml('abc<b data-mon-caret="1">def</b>ghi');
 		assertCaretPosition(logicalCaret.next(CaretPosition(getRoot().firstChild, 3)), CaretPosition(getRoot().lastChild, 0));
 		assertCaretPosition(logicalCaret.prev(CaretPosition(getRoot().lastChild, 0)), CaretPosition(getRoot().firstChild, 3));
 	});

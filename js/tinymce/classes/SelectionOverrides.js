@@ -260,7 +260,7 @@ define("tinymce/SelectionOverrides", [
 				var textBlock = editor.dom.create(editor.settings.forced_root_block);
 
 				if (!Env.ie || Env.ie >= 11) {
-					textBlock.innerHTML = '<br data-mce-bogus="1">';
+					textBlock.innerHTML = '<br data-mon-bogus="1">';
 				}
 
 				return textBlock;
@@ -326,11 +326,11 @@ define("tinymce/SelectionOverrides", [
 		}
 
 		function getBlockCaretContainer() {
-			return $('*[data-mce-caret]')[0];
+			return $('*[data-mon-caret]')[0];
 		}
 
 		function showBlockCaretContainer(blockCaretContainer) {
-			if (blockCaretContainer.hasAttribute('data-mce-caret')) {
+			if (blockCaretContainer.hasAttribute('data-mon-caret')) {
 				CaretContainer.showCaretContainerBlock(blockCaretContainer);
 				setRange(getRange()); // Removes control rect on IE
 				scrollIntoView(blockCaretContainer[0]);
@@ -722,7 +722,7 @@ define("tinymce/SelectionOverrides", [
 				var br, ceRoot = getContentEditableRoot(editor.selection.getNode());
 
 				if (isContentEditableTrue(ceRoot) && isBlock(ceRoot) && editor.dom.isEmpty(ceRoot)) {
-					br = editor.dom.create('br', {"data-mce-bogus": "1"});
+					br = editor.dom.create('br', {"data-mon-bogus": "1"});
 					editor.$(ceRoot).empty().append(br);
 					editor.selection.setRng(CaretPosition.before(br).toRange());
 				}
@@ -923,7 +923,7 @@ define("tinymce/SelectionOverrides", [
 			$realSelectionContainer = $('#' + realSelectionId);
 			if ($realSelectionContainer.length === 0) {
 				$realSelectionContainer = $(
-					'<div data-mce-bogus="all" class="mce-offscreen-selection"></div>'
+					'<div data-mon-bogus="all" class="mce-offscreen-selection"></div>'
 				).attr('id', realSelectionId);
 
 				$realSelectionContainer.appendTo(editor.getBody());
@@ -935,7 +935,7 @@ define("tinymce/SelectionOverrides", [
 			// This is a ridiculous hack where we place the selection from a block over the inline element
 			// so that just the inline element is copied as is and not converted.
 			if (targetClone === origTargetClone && Env.ie) {
-				$realSelectionContainer.empty().append('<p style="font-size: 0" data-mce-bogus="all">\u00a0</p>').append(targetClone);
+				$realSelectionContainer.empty().append('<p style="font-size: 0" data-mon-bogus="all">\u00a0</p>').append(targetClone);
 				range.setStartAfter($realSelectionContainer[0].firstChild.firstChild);
 				range.setEndAfter(targetClone);
 			} else {
@@ -953,8 +953,8 @@ define("tinymce/SelectionOverrides", [
 			sel.removeAllRanges();
 			sel.addRange(range);
 
-			editor.$('*[data-mce-selected]').removeAttr('data-mce-selected');
-			node.setAttribute('data-mce-selected', 1);
+			editor.$('*[data-mon-selected]').removeAttr('data-mon-selected');
+			node.setAttribute('data-mon-selected', 1);
 			selectedContentEditableNode = node;
 
 			return range;
@@ -962,7 +962,7 @@ define("tinymce/SelectionOverrides", [
 
 		function removeContentEditableSelection() {
 			if (selectedContentEditableNode) {
-				selectedContentEditableNode.removeAttribute('data-mce-selected');
+				selectedContentEditableNode.removeAttribute('data-mon-selected');
 				editor.$('#' + realSelectionId).remove();
 				selectedContentEditableNode = null;
 			}

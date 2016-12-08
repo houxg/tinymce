@@ -15,7 +15,7 @@ define('tinymce/inlite/core/Actions', [
 	var createTableHtml = function (cols, rows) {
 		var x, y, html;
 
-		html = '<table data-mce-id="mce" style="width: 100%">';
+		html = '<table data-mon-id="mce" style="width: 100%">';
 		html += '<tbody>';
 
 		for (y = 0; y < rows; y++) {
@@ -35,7 +35,7 @@ define('tinymce/inlite/core/Actions', [
 	};
 
 	var getInsertedElement = function (editor) {
-		var elms = editor.dom.select('*[data-mce-id]');
+		var elms = editor.dom.select('*[data-mon-id]');
 		return elms[0];
 	};
 
@@ -46,7 +46,7 @@ define('tinymce/inlite/core/Actions', [
 			editor.insertContent(createTableHtml(cols, rows));
 
 			tableElm = getInsertedElement(editor);
-			tableElm.removeAttribute('data-mce-id');
+			tableElm.removeAttribute('data-mon-id');
 			cellElm = editor.dom.select('td,th', tableElm);
 			editor.selection.setCursorLocation(cellElm[0], 0);
 		});

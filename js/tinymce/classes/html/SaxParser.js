@@ -296,7 +296,7 @@ define("tinymce/html/SaxParser", [
 
 						// Parse attributes
 						if ((attribsValue = matches[8])) {
-							isInternalElement = attribsValue.indexOf('data-mce-type') !== -1; // Check if the element is an internal element
+							isInternalElement = attribsValue.indexOf('data-mon-type') !== -1; // Check if the element is an internal element
 
 							// If the element has internal attributes then remove it if we are told to do so
 							if (isInternalElement && removeInternalElements) {
@@ -377,7 +377,7 @@ define("tinymce/html/SaxParser", [
 							}
 
 							// Invalidate element if it's marked as bogus
-							if ((attr = attrList.map['data-mce-bogus'])) {
+							if ((attr = attrList.map['data-mon-bogus'])) {
 								if (attr === 'all') {
 									index = findEndTag(schema, html, tokenRegExp.lastIndex);
 									tokenRegExp.lastIndex = index;

@@ -211,7 +211,7 @@ define("tinymce/pasteplugin/Clipboard", [
 			pasteBinElm = dom.add(editor.getBody(), 'div', {
 				id: "mcepastebin",
 				contentEditable: true,
-				"data-mce-bogus": "all",
+				"data-mon-bogus": "all",
 				style: 'position: absolute; top: ' + top + 'px;' +
 					'width: 10px; height: 10px; overflow: hidden; opacity: 0'
 			}, pasteBinDefaultContent);
@@ -670,7 +670,7 @@ define("tinymce/pasteplugin/Clipboard", [
 				}
 
 				function remove(node) {
-					if (!node.attr('data-mce-object') && src !== Env.transparentSrc) {
+					if (!node.attr('data-mon-object') && src !== Env.transparentSrc) {
 						node.remove();
 					}
 				}

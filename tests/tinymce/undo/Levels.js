@@ -49,7 +49,7 @@ ModuleLoader.require([
 		deepEqual(Levels.createFromEditor(editor), {
 			'beforeBookmark': null,
 			'bookmark': null,
-			'content': Env.ie && Env.ie < 11 ? '<p></p>' : '<p><br data-mce-bogus="1"></p>',
+			'content': Env.ie && Env.ie < 11 ? '<p></p>' : '<p><br data-mon-bogus="1"></p>',
 			'fragments': null,
 			'type': 'complete'
 		});

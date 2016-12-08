@@ -225,9 +225,9 @@ define("tinymce/tableplugin/Dialogs", [
 						stylesToMerge.push({name: 'border-spacing', value: addSizeSuffix(data.cellspacing)});
 						mergeStyles(dom, tableElm, stylesToMerge);
 						dom.setAttribs(tableElm, {
-							'data-mce-border-color': data.borderColor,
-							'data-mce-cell-padding': data.cellpadding,
-							'data-mce-border': data.border
+							'data-mon-border-color': data.borderColor,
+							'data-mon-cell-padding': data.cellpadding,
+							'data-mon-border': data.border
 						});
 						if (tableElm.children) {
 							for (var i = 0; i < tableElm.children.length; i++) {
@@ -260,7 +260,7 @@ define("tinymce/tableplugin/Dialogs", [
 
 					if (!captionElm && data.caption) {
 						captionElm = dom.create('caption');
-						captionElm.innerHTML = !Env.ie ? '<br data-mce-bogus="1"/>' : '\u00a0';
+						captionElm.innerHTML = !Env.ie ? '<br data-mon-bogus="1"/>' : '\u00a0';
 						tableElm.insertBefore(captionElm, tableElm.firstChild);
 					}
 					unApplyAlign(tableElm);
@@ -306,11 +306,11 @@ define("tinymce/tableplugin/Dialogs", [
 						height: removePxSuffix(dom.getStyle(tableElm, 'height') || dom.getAttrib(tableElm, 'height')),
 						cellspacing: removePxSuffix(dom.getStyle(tableElm, 'border-spacing') ||
 							dom.getAttrib(tableElm, 'cellspacing')),
-						cellpadding: dom.getAttrib(tableElm, 'data-mce-cell-padding') || dom.getAttrib(tableElm, 'cellpadding') ||
+						cellpadding: dom.getAttrib(tableElm, 'data-mon-cell-padding') || dom.getAttrib(tableElm, 'cellpadding') ||
 							getTDTHOverallStyle(tableElm, 'padding'),
-						border: dom.getAttrib(tableElm, 'data-mce-border') || dom.getAttrib(tableElm, 'border') ||
+						border: dom.getAttrib(tableElm, 'data-mon-border') || dom.getAttrib(tableElm, 'border') ||
 							getTDTHOverallStyle(tableElm, 'border'),
-						borderColor: dom.getAttrib(tableElm, 'data-mce-border-color'),
+						borderColor: dom.getAttrib(tableElm, 'data-mon-border-color'),
 						caption: !!dom.select('caption', tableElm)[0],
 						'class': dom.getAttrib(tableElm, 'class')
 					};
@@ -498,7 +498,7 @@ define("tinymce/tableplugin/Dialogs", [
 			}
 
 			// Get selected cells or the current cell
-			cells = editor.dom.select('td[data-mce-selected],th[data-mce-selected]');
+			cells = editor.dom.select('td[data-mon-selected],th[data-mon-selected]');
 			cellElm = editor.dom.getParent(editor.selection.getStart(), 'td,th');
 			if (!cells.length && cellElm) {
 				cells.push(cellElm);
@@ -743,7 +743,7 @@ define("tinymce/tableplugin/Dialogs", [
 
 			each(tableElm.rows, function(row) {
 				each(row.cells, function(cell) {
-					if (dom.getAttrib(cell, 'data-mce-selected') || cell == cellElm) {
+					if (dom.getAttrib(cell, 'data-mon-selected') || cell == cellElm) {
 						rows.push(row);
 						return false;
 					}

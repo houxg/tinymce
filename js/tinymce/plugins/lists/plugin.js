@@ -79,7 +79,7 @@ tinymce.PluginManager.add('lists', function(editor) {
 		function isEmpty(elm, keepBookmarks) {
 			var empty = dom.isEmpty(elm);
 
-			if (keepBookmarks && dom.select('span[data-mce-type=bookmark]').length > 0) {
+			if (keepBookmarks && dom.select('span[data-mon-type=bookmark]').length > 0) {
 				return false;
 			}
 
@@ -92,7 +92,7 @@ tinymce.PluginManager.add('lists', function(editor) {
 		 * added to them since they can be restored after a dom operation.
 		 *
 		 * So this: <p><b>|</b><b>|</b></p>
-		 * becomes: <p><b><span data-mce-type="bookmark">|</span></b><b data-mce-type="bookmark">|</span></b></p>
+		 * becomes: <p><b><span data-mon-type="bookmark">|</span></b><b data-mon-type="bookmark">|</span></b></p>
 		 *
 		 * @param  {DOMRange} rng DOM Range to get bookmark on.
 		 * @return {Object} Bookmark object.
@@ -107,7 +107,7 @@ tinymce.PluginManager.add('lists', function(editor) {
 				offset = rng[start ? 'startOffset' : 'endOffset'];
 
 				if (container.nodeType == 1) {
-					offsetNode = dom.create('span', {'data-mce-type': 'bookmark'});
+					offsetNode = dom.create('span', {'data-mon-type': 'bookmark'});
 
 					if (container.hasChildNodes()) {
 						offset = Math.min(offset, container.childNodes.length - 1);
@@ -155,8 +155,8 @@ tinymce.PluginManager.add('lists', function(editor) {
 							return idx;
 						}
 
-						// Skip data-mce-type=bookmark nodes
-						if (node.nodeType != 1 || node.getAttribute('data-mce-type') != 'bookmark') {
+						// Skip data-mon-type=bookmark nodes
+						if (node.nodeType != 1 || node.getAttribute('data-mon-type') != 'bookmark') {
 							idx++;
 						}
 
@@ -219,7 +219,7 @@ tinymce.PluginManager.add('lists', function(editor) {
 				while ((node = contentNode.firstChild)) {
 					var nodeName = node.nodeName;
 
-					if (!hasContentNode && (nodeName != 'SPAN' || node.getAttribute('data-mce-type') != 'bookmark')) {
+					if (!hasContentNode && (nodeName != 'SPAN' || node.getAttribute('data-mon-type') != 'bookmark')) {
 						hasContentNode = true;
 					}
 
@@ -246,7 +246,7 @@ tinymce.PluginManager.add('lists', function(editor) {
 			} else {
 				// BR is needed in empty blocks on non IE browsers
 				if (!hasContentNode && (!tinymce.Env.ie || tinymce.Env.ie > 10)) {
-					textBlock.appendChild(dom.create('br', {'data-mce-bogus': '1'}));
+					textBlock.appendChild(dom.create('br', {'data-mon-bogus': '1'}));
 				}
 			}
 
@@ -270,7 +270,7 @@ tinymce.PluginManager.add('lists', function(editor) {
 				dom.remove(targetNode);
 			}
 
-			bookmarks = dom.select('span[data-mce-type="bookmark"]', ul);
+			bookmarks = dom.select('span[data-mon-type="bookmark"]', ul);
 			newBlock = newBlock || createNewTextBlock(li);
 			tmpRng = dom.createRng();
 			tmpRng.setStartAfter(li);

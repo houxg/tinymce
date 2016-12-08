@@ -23,7 +23,7 @@ tinymce.PluginManager.add('visualchars', function(editor) {
 		};
 
 		function wrapCharWithSpan(value) {
-			return '<span data-mce-bogus="1" class="mce-' + charMap[value] + '">' + value + '</span>';
+			return '<span data-mon-bogus="1" class="mce-' + charMap[value] + '">' + value + '</span>';
 		}
 
 		function compileCharMapToRegExp() {
